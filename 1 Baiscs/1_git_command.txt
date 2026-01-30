@@ -2,11 +2,27 @@ mkdir recipe-app   -- It will make new directory
 cd recipe-app     -- present working directory
 
 
-1. git init
+1️⃣ git init
     Converts a normal folder into a Git tracked project
     Creates a hidden .git folder where Git stores history, commits, branches
 
 
-2. git status
+2️⃣ git status
+    Shows:
+        Modified files
+        New untracked files
+        Files ready to be committed    
+
+
+3️⃣ git add <file>
+        Moves files to the staging area
+        You write multiple files but clip only some files to submit to commits
+        Other files are ignored for now
     
 
+4️⃣ git add .
+    Stages:
+        All new files
+        All modified files
+        All deleted files
+    in the current directory and subfolders
