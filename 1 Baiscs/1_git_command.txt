@@ -26,3 +26,32 @@ cd recipe-app     -- present working directory
         All modified files
         All deleted files
     in the current directory and subfolders
+Always run git status before and after git add .
+
+
+
+5️⃣ git commit -m "message"
+    Save changes with a message on version control
+    Now Git has:
+        Who changed
+        What changed
+        When it changed
+        Why it changed
+
+
+6️⃣ git log
+    See commit history
+    Shows:
+        All commits
+        Commit IDs
+        Author
+        Date
+        Message
+
+7️⃣ git log --oneline
+    Clean short history
+    Shows one commit per line
+    Short commit ID + message
+    Very clean and readable
+
+
