@@ -1,607 +1,1139 @@
-<!-- MDN website is best for all the documentation of HTML. -->
-
-<!-- ctrl + / is used to comment the line -->
-
-
-
-<!-- html is used for labelling our website and define the structure of a website. -->
-<!-- anything written between this < > is known as tag. -->
-
-
-
-
-
- <!-- what are tags in html
-HTML tags are the fundamental building blocks of a web page, used to define the structure and content of a document written in 
-Hypertext Markup Language (HTML). An HTML tag is composed of:
-
->>>>An opening tag, which marks the beginning of an element
->>>>Content, which is the information or structure within the element
->>>>A closing tag, which marks the end of the element
-
-
-The basic structure of an HTML tag is     <tagname>......Content.......</tagname>. Tags can be divided into four categories:
-
-1. Structural tags: Define the overall structure of the document, such as <html>, <head>, and <body>.
-2. Semantic tags: Provide meaning to the content, such as <header>, <nav>, <main>, <section>, and <article>.
-3. Presentational tags: Control the appearance of the content, such as <b>, <i>, <u>, and <font> (although these are deprecated and should be avoided).
-4. Interactive tags: Create interactive elements, such as <a> for hyperlinks and <form> for submitting data. -->
-
-
-<!-- tag is a special word used to define the structure,meaning and formatting of the webpage. -->
-
-
-
-
-
-
-
-
-
-
-    <!-- what are elements in html??
-
-HTML elements are the building blocks of an HTML document, providing structure, semantics, and formatting to the content. 
-They are composed of tags, which include an opening tag, content (optional), and a closing tag (except for self-closing or void elements).
- Elements can contain formatting instructions, semantic meaning, and content. -->
-
-
-<!-- <h1> opening tag 
-     </h1> closing tag -->
-
-
-
-
-     <!DOCTYPE html>    <!-- <!DOCTYPE html> is the method to declare html5    -->
-     <html lang="en">   <!--   html is working as root element for all the content written between it. -->
-     
-     <head>
-    
-                  <meta charset="UTF-8">       <!-- head tag is used for defining meta data , seo and title. 
-                  meta can define description, author,stylesheet and many more.-->
-         
-         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-         <title>Document</title>
-     </head>
-     <body>     <!-- in this body we will define all the data that is displayed on the website to the user.  -->
-         <h1>this is first heading</h1>
-         <!-- this h1 is used for making the main heading of the body and the paragraph. -->
-         <h2>this is second heading</h2>
-         <h3>this is third heading</h3>
-         <h4>this is forth heading</h4>
-         <h5>this is fifth heading</h5>
-         <h6>this is sixth heading</h6>
-                       <!-- after h6 tag all h7,h8 tags are behaved as paragraph tag -->
-     
-    
-     
-     
-                       <a href="https://www.youtube.com/">youtube.com</a>
-     <!-- >>>The HTML <a> tag defines a hyperlink, which is used to link from one page to another.
-       >>>The <a> tag also supports global attributes in HTML, such as id, class, style, and title.
-         >>>The href attribute can be used to link to external pages, internal sections on the same page
-                (using an empty fragment like href="#top"), or email addresses.
-         -->
-     
-         <!-- Example 1: Linking to an external page-->
-     
-     <p><a href="https://www.example.com">Visit Example.com</a></p>
-     
-     <!-- Example 2: Linking to an internal section -->
-     
-     <a href="#section1">Go to Section 1</a>
-     
-     <!-- Example 3: Linking to an email address -->
-
-<p><a href="mailto:user@example.com">Mail us</a> </p>
-
-
-     <!-- Example 4: Linking to mobile no. -->
-      <p><a href="tel:9999999999">call us</a></p>
-
-     
-     
-     
-     <!-- there are three types of lists. 
-      1. ordered list
-      2. unordered list
-      3. description list
-                -->
-     
-      <ol>
-         <li>EAT</li>
-      <LI>CODE</LI>
-      <LI>SLEEP</LI>
-      <LI>REPEAT</LI>
-                    </ol>
-      <!-- >>> The <ol> tag is used to create an ordered list, which can be numerical or alphabetical.
-        >>>The list items are defined using the <li> tag, which can be nested inside the <ol> tag.
-         >>> The list items can contain any content, including text, images, and other HTML elements.
-         >>> it is ordered list. -->
-
-         <!--this should be step wise . it cannot be written according to our choice. -->
-     
-
-
-
-         <ul>
-             <li>eat</li>
-             <li>code</li>
-             <li>SLEEP</li>
-             <li>REPEAT</li>
-         </ul>
-         <!-- this is unordered list tag used this starts with dot it does not give numbering to the list. -->
-               
-         <!-- this can be written randomly. -->
-
-
-
-     <!-- ol>li*3 this is shortcut to get faster three list items -->
-     
-     
-     
-     
-     
-     
-     
-     <dl>
-         <p>places i want to avoid</p>
-         <br><br>
-        
-
-       <dt>north pole </dt>
-       <dd>i hear this is <strong>cold!</strong></dd>
-       <h4><dt>south pole</dt></h4>
-       <dd>this is also <strong>cold!</strong></dd>
-       
-        </dl>
-    
-         
-        <!-- <dl>: The outer element that defines the description list.
-       <dt>: Defines a term or label for the description. Typically used for headings or keywords.
-       <dd>: Defines the description or explanation for the term. Can contain text, images, or other HTML elements. -->
-       
-     
-     
-         <table >
-                  <tr>                      <!--table row       -->
-                     <td>Sr. No.</td>       <!-- Table Data Cell --> 
-                     <td>Name</td>
-                     <td>Marks</td>
-                 </tr>
-     
-                 <tr>
-                     <td>1.</td>
-                     <td>Vipin Soni</td>
-                     <td>90</td>
-                 </tr>
-     
-                 <tr>
-                     <td>2.</td>
-                     <td>Deepchand</td>
-                     <td>80</td>
-                 </tr>
-                 <tr>
-                     <td>3.</td>
-                     <td>Vinay Mahla</td>
-                     <td>100</td>
-                 </tr>
-     
-         </table>
-     
-     
-     
-         <img src="https://imgs.search.brave.com/b125XPj0IJ95T1gKRAHX5zA7hGyi7dJ96p0VKcYyGGY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly
-         9idXJz/dC5zaG9waWZ5Y2Ru/LmNvbS9waG90b3Mv/dHdvLXRvbmUtaW5r/LWNsb3VkLmpwZz93/aWR0aD0xMDAwJmZv/cm1hdD1wanBnJmV4/
-         aWY9MCZpcHRjPTA" height="100px" alt="image not found">
-      
-                <!-- this image tag is used to add a image to the webpage.
-                     src is used for the link of the resource.
-                     alt is used for alternative if image is not shown by src code we can tell that image is not found-->
-     
-     
-     
-     <!-- let's discuss style attribute. -->
-     <h6 style="background-color: aqua;">hello it's background color</h6>
-     <h6 style="color: brown;">hello it's text color</h6>
-     <span style="background-color:red;">hello</span>
-       <!-- this style is used  -->
-     
-       <p>        
-                <!-- this p tag is used for writing paragraph. -->
-         <strong>
-           this is strong line or a bold line
-                             </strong>
-     <!-- this strong is used for bolding the line -->
-      
-     
-       </p>
-     
-     <p>
-         <b>this b tag can also be used to bold the line</b>
-     </p>
-     
-     <p>
-         <em> hello friends this is written in italic words</em>
-         <!-- this em makes your paragraph in italic words.it stands for emphasize-->
-        <!-- <em> is used for semantic purposes (emphasis or importance). -->
-     
-     </p>
-      
-      
-         <p><i>hello</i></p>
-         <!-- <i> is used for presentation purposes (style). -->
-     
-             
-             <p><u>hello</u></p>
-             <!-- this u tag is used to underline the paragraph -->
-     
-             <p><s>hello</s></p>
-             <!-- this s tag is used to strike the paragraph -->
-     
-     
-     
-             <p>
-                 2 <sup>5</sup>
-             </p>
-             <!-- this sup is superscript tag that is used when we want to raise some power of something. -->
-     
-             <p>o 
-                 <sub>2</sub>
-             </p>
-             <!-- this sub is subscript tag that is used when we want to raise some power of something in down. -->
-     
-     
-             <p>this is paragraph and in this paragraph we can write anything under the h1 heading.
-                 <br> when we want to write in new line we use br:
-                 <br>....this will not give spacing between the lines.
-                 <br>....may be it will be used.
-                 <br>...we need to put br with every starting of the line.
-               <!-- br is line breaking tag and it is used when we want to continue the same line and change the line.-->
-           </p>
-     
-     
-           <!-- it is opposite to the <br> tag this was line breaking tag.  -->
-     <p>
-            <pre>it     is    quiet    easy      for    spacing  
-             and we can also break the line in between 
-             where we want without using any tag in between
-            </pre>
-           </p>
-      <!-- Preformatted text (pre> tag): Use the <pre> tag to preserve the original formatting, including spaces, within the text. 
-          This method is ideal for displaying code snippets or formatted text. -->
-
-
-
-     <p>
-        <h1>to write both p and h1 tag we write p>h1</h1>
-     </p>
-
-     <h1>when i use <span style="color: aqua;">h1+h2</span> tag i get both h1 and h2 tags.</h1>
-     <h2>these are shortcuts that save our time like h1 + h2 </h2>
-
-
-     <p>this is used to write direct into the paragraph p{what we want to write}</p>
-
-
-<p>Lorem ipsum dolor sit met. <br> lorem+how many characters make a paragraph of that much word we wants.</p> 
-
-
-
-
-
-<p id="para1"></p>  
-    <!-- to make the id we use p#para1 -->
-
-
-<article id="article1"></article> 
-   <!-- to make the id we use article#article1  -->
-
-
-   <p class="para"></p>
-<!-- to make the class we use p.para -->
-
-
-<div>this tag doesn't provide any meaning . 
-    it is used only for making different sections in big codes . 
-    we can create small-small parts of the code by this tag</div>
-    <div class="container">used to make a container div.container or simply we can write only .container</div>
-
-    <!-- used for dividing the code parts for website like header is in different div footer diff , divide every part of the website
-     to use it in right way for css properties  -->
-
-
-    <!-- Block Elements:-
-            >>these elements comes in next line.
-            >>takes all the space from left to right by default.
-            >>they takes all the space of the line. -->
-<p>this took complete line if i will start next para it will take new line</p>
-<p>let's see this para is started in new line</p>
-
-<div style="background-color: blueviolet;">this color took all the space so this div is block element.</div>
-
-
-<!-- inline elements:-
-            >>these elements starts in same line .
-            >>they take as much space as much they required in the line.
-        -->
-
-        <span style="background-color: blue;">It can be used to highlight specific words, apply different font sizes, 
-            or add other styling attributes to individual characters or groups of text.</span>
-
-
-
-            <p>find is interchange in block and inline element is present</p>
-
-
-
-            <div style="background-color: blueviolet; display: inline ;">this is converted from block element to inline element.</div>
-
-
-            <ul>
-                <li>
-                    <p><a href=""></a></p>
-                </li>
-                <li>
-                    <p><a href=""></a></p>           
-                </li>
-                <li>
-                    <p><a href=""></a></p>
-                </li>
-            </ul>
-                                                 <!-- to write all this we need to write only ul>(li>P>a)*3 -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- let's start Tables in HTML -->
-<table border="1" style="border-collapse: collapse;">           <!-- this border tells us the width of the border -->
-        <thead>
-            <!-- The thead element is used to group header content in an HTML table. -->
-            <th>Student ID</th>
-            <th>Student Name</th>
-            <th>Gender</th>
-            <th>Age</th>
-            <!-- The th element is used to define a header cell in a table. -->
-        </thead>
-
-        <tbody>
-            <!-- The tbody element is used to group the body content in an HTML table. -->
-       <tr>
+<!DOCTYPE html>
+<!--
+  ================================================================
+  FILE: index2.html — HTML Learning Notes (Part 2)
+  TOPICS COVERED:
+    1. Tags vs Elements
+    2. Headings (h1–h6)
+    3. Links (anchor tag)
+    4. Lists (ol, ul, dl)
+    5. Tables (basic, rowspan, colspan, thead/tbody/tfoot)
+    6. Images
+    7. Inline Styles
+    8. Text Formatting (strong, b, em, i, u, s, sup, sub)
+    9. Block vs Inline Elements (div, span)
+    10. id and class attributes
+    11. Emmet Shortcuts
+    12. Forms & Input Types
+    13. Semantic/Interactive Tags (details, summary, section, fieldset)
+  ================================================================
+-->
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Learning Notes — Part 2</title>
+
+  <style>
+    /* Basic styling so this file is readable when opened in a browser */
+    body { font-family: Arial, sans-serif; max-width: 900px; margin: 0 auto; padding: 20px; }
+    table { border-collapse: collapse; margin-bottom: 20px; }
+    td, th { border: 1px solid #333; padding: 8px 12px; }
+    form { border: 2px solid #333; padding: 20px; margin-bottom: 20px; border-radius: 6px; }
+    fieldset { padding: 15px; margin-bottom: 10px; }
+    hr { margin: 30px 0; }
+    pre { background: #f4f4f4; padding: 10px; border-radius: 4px; }
+    details { border: 1px solid #aaa; padding: 10px; border-radius: 4px; margin: 10px 0; }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============================================================
+       SECTION 1: TAGS vs ELEMENTS — Core Concepts
+       ============================================================ -->
+
+  <h1>HTML Learning Notes — Part 2</h1>
+
+  <h2>1. Tags vs Elements</h2>
+
+  <p>
+    An <strong>HTML Tag</strong> is just the label written inside angle brackets, e.g. <code>&lt;p&gt;</code> or <code>&lt;/p&gt;</code>.<br>
+    An <strong>HTML Element</strong> = opening tag + content + closing tag: <code>&lt;p&gt;Hello&lt;/p&gt;</code>
+  </p>
+
+  <!--
+    TAGS vs ELEMENTS — The Difference
+    ====================================
+    TAG     → just the markup label:       <p>   or   </p>
+    ELEMENT → the complete unit:           <p>content here</p>
+
+    Four categories of HTML tags:
+    -----------------------------------------------------------------------
+    1. STRUCTURAL   → Define the page skeleton:         <html>, <head>, <body>
+    2. SEMANTIC     → Give meaning to content:          <header>, <nav>, <main>, <section>, <article>, <footer>
+    3. PRESENTATIONAL → Control appearance (AVOID):    <b>, <i>, <u>, <font> — deprecated; use CSS instead
+    4. INTERACTIVE  → User-interaction elements:        <a>, <form>, <button>, <input>
+
+    Self-closing / Void elements (no closing tag needed):
+    → <br>, <hr>, <img>, <input>, <meta>, <link>
+  -->
+
+
+  <!-- ============================================================
+       SECTION 2: HEADINGS h1 to h6
+       ============================================================ -->
+
+  <hr>
+  <h2>2. Headings — h1 to h6</h2>
+
+  <h1>h1 — Main Page Title (use only ONE per page)</h1>
+  <h2>h2 — Section Heading</h2>
+  <h3>h3 — Sub-Section Heading</h3>
+  <h4>h4 — Sub-Sub-Section Heading</h4>
+  <h5>h5 — Minor Heading</h5>
+  <h6>h6 — Smallest Heading</h6>
+
+  <!--
+    Heading Tags: <h1> to <h6>
+    ============================
+    - h1 = biggest, h6 = smallest (font size decreases from h1 to h6).
+    - There are only 6 heading levels. h7, h8 etc. do NOT exist — 
+      if you write them, the browser treats them as plain text (like a <p>).
+    - RULE: Only ONE <h1> per page (SEO best practice).
+    - Headings help:
+        → Search engines understand page structure (SEO)
+        → Screen readers navigate the page (Accessibility)
+    - Think of it like a document outline:
+        h1 = Document title
+        h2 = Chapter
+        h3 = Section in a chapter
+        h4 = Sub-point
+  -->
+
+
+  <!-- ============================================================
+       SECTION 3: LINKS — <a> ANCHOR TAG
+       ============================================================ -->
+
+  <hr>
+  <h2>3. Links — The &lt;a&gt; Anchor Tag</h2>
+
+  <!-- External link -->
+  <p><a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">YouTube (opens in new tab)</a></p>
+
+  <!-- Link to same page section -->
+  <p><a href="#section-forms">Jump to Forms section on this page</a></p>
+
+  <!-- Email link -->
+  <p><a href="mailto:user@example.com">Email Us</a></p>
+
+  <!-- Phone link -->
+  <p><a href="tel:+919999999999">Call Us: +91 9999999999</a></p>
+
+  <!-- Link to another local file -->
+  <p><a href="index.html">Go to Part 1 of my notes</a></p>
+
+  <!--
+    <a> — Anchor Tag (Hyperlink)
+    =============================
+    Syntax: <a href="destination">clickable text</a>
+
+    Key Attributes:
+    ----------------
+    href        → The destination. Can be:
+                   - External URL:   href="https://www.youtube.com/"
+                   - Local file:     href="about.html"
+                   - Page section:   href="#section-id"  (must match an id="" on the page)
+                   - Email:          href="mailto:someone@example.com"
+                   - Phone:          href="tel:+91XXXXXXXXXX"
+                   - Placeholder:    href="#"  (goes to top of page or does nothing)
+
+    target      → Where to open the link:
+                   - _self   → same tab (DEFAULT — don't need to write it)
+                   - _blank  → new tab
+
+    rel         → Relationship between current page and linked page:
+                   - "noopener noreferrer" → ALWAYS add when using target="_blank"
+                     (security: prevents the new page from controlling your page via JS)
+
+    Interview tip: <a> is an INLINE element — it sits within a line of text.
+  -->
+
+
+  <!-- ============================================================
+       SECTION 4: LISTS
+       ============================================================ -->
+
+  <hr>
+  <h2>4. Lists — ol, ul, dl</h2>
+
+  <h3>Ordered List (Numbered) — Use when ORDER matters</h3>
+  <ol>
+    <li>Eat</li>
+    <li>Code</li>
+    <li>Sleep</li>
+    <li>Repeat</li>
+  </ol>
+  <!--
+    <ol> — Ordered List
+    ====================
+    - Items are numbered automatically (1, 2, 3...).
+    - Each item uses <li> (list item) tag.
+    - Use for: steps, rankings, instructions, recipes.
+    - The "type" attribute changes numbering style:
+        type="1"  → 1, 2, 3 (default)
+        type="A"  → A, B, C
+        type="a"  → a, b, c
+        type="I"  → I, II, III (Roman)
+    - The "start" attribute sets starting number: <ol start="5">
+
+    EMMET shortcut: ol>li*4  →  creates <ol> with 4 <li> items instantly
+  -->
+
+  <h3>Unordered List (Bullet Points) — Use when ORDER does NOT matter</h3>
+  <ul>
+    <li>Eat</li>
+    <li>Code</li>
+    <li>Sleep</li>
+    <li>Repeat</li>
+  </ul>
+  <!--
+    <ul> — Unordered List
+    ======================
+    - Items display with bullet points (• by default).
+    - Same <li> tags as ordered list.
+    - Bullet style changed with CSS: list-style-type: disc | circle | square | none
+    - Use for: navigation menus, feature lists, unordered items.
+  -->
+
+  <h3>Description List — Use for terms and their definitions</h3>
+  <dl>
+    <dt>North Pole</dt>
+    <dd>Extremely <strong>cold!</strong> I'll pass.</dd>
+
+    <dt>South Pole</dt>
+    <dd>Also <strong>freezing cold!</strong> No thanks.</dd>
+  </dl>
+  <!--
+    <dl> — Description List
+    ========================
+    Three tags work together:
+      <dl>  = Description List container (wraps everything)
+      <dt>  = Description Term — the word/label being defined
+      <dd>  = Description Details — the explanation or definition
+
+    Use for: glossaries, FAQs, metadata (key: value pairs).
+
+    IMPORTANT: Do NOT put <h4>, <p>, <br><br>, or other layout tags
+    inside a <dl> — it's invalid HTML. Keep only <dt> and <dd> inside.
+  -->
+
+
+  <!-- ============================================================
+       SECTION 5: IMAGES
+       ============================================================ -->
+
+  <hr>
+  <h2>5. Images — &lt;img&gt; Tag</h2>
+
+  <img src="img.png" height="100" alt="Profile picture of the author">
+
+  <!--
+    <img> — Image Tag
+    ==================
+    - A self-closing / void element (no closing </img> tag).
+    - Syntax: <img src="path-or-url" alt="description">
+
+    Key Attributes:
+    ----------------
+    src     → Source: the path or URL of the image file.
+                Relative path (local): src="img.png"  or  src="images/photo.jpg"
+                Absolute URL (web):    src="https://example.com/photo.jpg"
+
+    alt     → Alternative text — MANDATORY for accessibility.
+                → Shown when the image fails to load.
+                → Read by screen readers for visually impaired users.
+                → Indexed by Google for image SEO.
+                → Rule: describe what the image shows, e.g. alt="Student sitting at a desk coding"
+
+    width   → Width in pixels or % (e.g. width="300" or width="50%")
+    height  → Height in pixels (e.g. height="200")
+
+    BEST PRACTICE: Set either width OR height (not both), 
+    so the image scales proportionally without distorting.
+
+    Image Formats:
+    ----------------
+    .jpg / .jpeg → Photos (lossy compression, small file size)
+    .png         → Images with transparent backgrounds
+    .svg         → Icons and logos (scales to any size, no quality loss)
+    .webp        → Modern format — smaller than jpg/png, high quality (recommended)
+    .gif         → Short animations
+
+    NOTE: Avoid using direct search engine image URLs (like Brave/Google search result 
+    image links). They can expire or break. Always download and host your own images.
+  -->
+
+
+  <!-- ============================================================
+       SECTION 6: INLINE STYLES
+       ============================================================ -->
+
+  <hr>
+  <h2>6. Inline Styles — style="" Attribute</h2>
+
+  <h4 style="background-color: aqua;">Aqua background using inline style</h4>
+  <h4 style="color: brown;">Brown text using inline style</h4>
+  <span style="background-color: red; color: white; padding: 4px;">Red background span</span>
+
+  <!--
+    style="" — Inline Style Attribute
+    ===================================
+    - Applies CSS directly to a single HTML element.
+    - Syntax: style="property: value; property: value;"
+    - Multiple CSS properties are separated by semicolons.
+
+    Common inline style properties:
+    --------------------------------
+    color              → text color
+    background-color   → background color
+    font-size          → text size (e.g. 20px, 1.5em)
+    font-weight        → boldness (bold / normal / 700)
+    border             → border (e.g. "1px solid black")
+    padding            → inner spacing
+    margin             → outer spacing
+    display            → layout type (block / inline / inline-block / flex)
+
+    WHY INLINE STYLES ARE GENERALLY AVOIDED:
+    ------------------------------------------
+    1. Hard to maintain — if you want to change one style, you must edit EVERY element.
+    2. Overrides CSS stylesheets — makes debugging harder.
+    3. Mixes content (HTML) with presentation (CSS) — violates separation of concerns.
+
+    WHEN TO USE INLINE STYLES:
+    → Quick prototyping and learning (fine for now).
+    → Dynamically set styles via JavaScript.
+    → Email HTML templates (which can't use external CSS).
+
+    BEST PRACTICE: Use external CSS (.css file) or <style> tag in <head>.
+  -->
+
+
+  <!-- ============================================================
+       SECTION 7: TEXT FORMATTING TAGS
+       ============================================================ -->
+
+  <hr>
+  <h2>7. Text Formatting Tags</h2>
+
+  <p><strong>strong → Bold + Semantically Important</strong></p>
+  <p><b>b → Bold, visual only (no semantic meaning — avoid)</b></p>
+  <!--
+    <strong> vs <b>
+    ================
+    <strong> → Bold text + tells browser/screen reader "this is IMPORTANT"  (USE THIS)
+    <b>      → Bold text, purely visual, no added meaning               (AVOID in modern HTML)
+  -->
+
+  <p><em>em → Italic + Semantically Emphasized</em></p>
+  <p><i>i → Italic, visual only (no semantic meaning)</i></p>
+  <!--
+    <em> vs <i>
+    ============
+    <em>  → Italic + means "this text is emphasized / stressed"  (USE THIS)
+    <i>   → Italic, purely visual, no added meaning.
+            Acceptable for: foreign words, technical terms, thoughts.
+  -->
+
+  <p><u>u → Underline text</u></p>
+  <!--
+    <u> — Underline
+    ================
+    - Underlines text.
+    - CAUTION: Underlined text can look like a link — confusing for users.
+    - Rarely used; prefer CSS: text-decoration: underline;
+    - Valid use: spelling errors (like a red squiggly underline).
+  -->
+
+  <p><s>s → Strikethrough — text that is no longer accurate or relevant</s></p>
+  <!--
+    <s> — Strikethrough
+    ====================
+    - Draws a horizontal line through the text.
+    - Indicates text that is no longer accurate, removed, or outdated.
+    - Common use: showing original price crossed out (e.g. ₹999 → ₹499).
+    - Do NOT use <s> just to visually cross something out — use CSS instead.
+    - Related: <del> = deleted text (for tracked changes/edits in documents).
+  -->5
+
+  <p>2<sup>10</sup> = 1024 (superscript — raised text)</p>
+  <!--
+    <sup> — Superscript
+    ====================
+    - Renders text above the normal baseline, in smaller font.
+    - Use for: mathematical powers (x²), footnote numbers, ordinals (1st).
+    - Example: E = mc<sup>2</sup>
+  -->
+
+  <p>H<sub>2</sub>O — water (subscript — lowered text)</p>
+  <!--
+    <sub> — Subscript
+    ==================
+    - Renders text below the normal baseline, in smaller font.
+    - Use for: chemical formulas (H₂O, CO₂), mathematical notation.
+    - Example: CO<sub>2</sub>
+  -->
+
+
+  <!-- ============================================================
+       SECTION 8: BLOCK vs INLINE ELEMENTS
+       ============================================================ -->
+
+  <hr>
+  <h2>8. Block vs Inline Elements</h2>
+
+  <h3>Block Elements</h3>
+  <p>This paragraph takes the full width of the page — it's a block element.</p>
+  <p>This next paragraph automatically starts on a NEW LINE.</p>
+  <div style="background-color: blueviolet; color: white; padding: 8px;">
+    This &lt;div&gt; is a block element — it takes the full width.
+  </div>
+
+  <!--
+    BLOCK ELEMENTS
+    ==============
+    - Always start on a NEW LINE.
+    - Take up the FULL WIDTH available (left edge to right edge) by default.
+    - Can contain other block elements and inline elements.
+    - Examples: <div>, <p>, <h1>–<h6>, <ul>, <ol>, <li>, <table>, <form>,
+                <header>, <footer>, <section>, <article>, <nav>
+
+    Converting block → inline with CSS:
+      style="display: inline;"
+  -->
+
+  <h3>Inline Elements</h3>
+  <p>
+    Normal text, then
+    <span style="background-color: blue; color: white; padding: 2px 4px;">this span is inline</span>
+    — and the sentence continues on the same line.
+    <strong>Bold words</strong> and <em>italic words</em> are also inline.
+  </p>
+
+  <!--
+    INLINE ELEMENTS
+    ===============
+    - Do NOT start on a new line — they flow within a line of text.
+    - Only take up as much width as their content needs.
+    - Should NOT contain block elements inside them.
+    - Examples: <a>, <span>, <strong>, <em>, <b>, <i>, <u>, <img>,
+                <sup>, <sub>, <abbr>, <br>
+
+    Converting inline → block with CSS:
+      style="display: block;"
+  -->
+
+  <h3>Converting Block ↔ Inline with display:</h3>
+  <div style="background-color: blueviolet; color: white; padding: 4px; display: inline;">
+    This &lt;div&gt; is normally a block, but display:inline makes it flow inline.
+  </div>
+  <div style="background-color: green; color: white; padding: 4px; display: inline;">
+    Another inline div — both sit on the same line.
+  </div>
+
+  <!--
+    BLOCK vs INLINE QUICK COMPARISON:
+    ===================================
+    Feature          | Block Elements       | Inline Elements
+    -----------------+----------------------+-------------------
+    New line?        | YES (always)         | NO (flows in text)
+    Width            | Full page width      | Only content width
+    Can have width/  | YES                  | NO (ignored in CSS)
+    height in CSS?   |                      |
+    Contains         | Block + Inline       | Only Inline
+    Examples         | div, p, h1, ul, form | span, a, strong, em
+
+    display: inline-block → Best of both:
+    → Flows inline like text, BUT respects width and height like a block.
+    → Used heavily in layouts (e.g. side-by-side buttons).
+  -->
+
+
+  <!-- ============================================================
+       SECTION 9: div AND span — Generic Containers
+       ============================================================ -->
+
+  <hr>
+  <h2>9. &lt;div&gt; and &lt;span&gt; — Generic Containers</h2>
+
+  <div class="container">
+    <p>This &lt;div&gt; acts as a container wrapping multiple elements together.</p>
+    <p>Usually used to group elements for CSS styling or JavaScript targeting.</p>
+  </div>
+
+  <p>
+    The word <span style="color: red; font-weight: bold;">HTML</span> is highlighted
+    using a &lt;span&gt; tag — it doesn't break the line.
+  </p>
+
+  <!--
+    <div> — Division (Block Container)
+    =====================================
+    - A generic BLOCK-level container. No visual appearance by default.
+    - No semantic meaning — purely structural.
+    - Used to group elements together for:
+        → CSS styling: .container { max-width: 1200px; margin: auto; }
+        → JavaScript DOM manipulation: document.querySelector('.container')
+        → Layout: wrapping sections of the page
+
+    WHEN TO USE <div>:
+    → When no semantic tag fits (header, section, nav, article, footer, etc.)
+    → Commonly used class names: .container, .wrapper, .row, .card, .grid
+
+    Emmet shortcut: .container → <div class="container"></div>
+
+    ---
+
+    <span> — Inline Container
+    ==========================
+    - A generic INLINE container. No visual appearance by default.
+    - Used to style or target a PART of a text (a word, phrase, character).
+    - Example uses:
+        → Highlight one word in a paragraph
+        → Apply a different color to part of text
+        → Wrap a word for JavaScript event handling
+  -->
+
+
+  <!-- ============================================================
+       SECTION 10: id AND class ATTRIBUTES
+       ============================================================ -->
+
+  <hr>
+  <h2>10. id and class Attributes</h2>
+
+  <p id="para1">This paragraph has id="para1".</p>
+  <p class="highlight">This paragraph has class="highlight".</p>
+  <p class="highlight">This one also has class="highlight" — same class, multiple elements.</p>
+  <article id="article1">This article has id="article1".</article>
+
+  <!--
+    id vs class — CRITICAL DIFFERENCE
+    ====================================
+
+    id=""
+    ------
+    - Identifies ONE SPECIFIC, UNIQUE element on the page.
+    - A page should NEVER have two elements with the same id.
+    - Used for:
+        → In-page jump links:  <a href="#para1">
+        → CSS styling:         #para1 { color: red; }
+        → JavaScript:          document.getElementById("para1")
+    - Emmet shortcut: p#para1 → <p id="para1"></p>
+
+    class=""
+    ---------
+    - Groups MULTIPLE elements together under the same name.
+    - Many elements CAN share the same class.
+    - One element can have MULTIPLE classes: class="card highlight featured"
+    - Used for:
+        → CSS styling:         .highlight { background: yellow; }
+        → JavaScript:          document.querySelectorAll(".highlight")
+    - Emmet shortcut: p.highlight → <p class="highlight"></p>
+
+    SUMMARY:
+    id   → unique identifier → like your Aadhaar number (one per person)
+    class → reusable group label → like a college batch name (many share it)
+
+    EMMET SHORTCUTS for id and class:
+    -----------------------------------
+    p#para1          → <p id="para1"></p>
+    p.highlight      → <p class="highlight"></p>
+    div.container    → <div class="container"></div>
+    article#article1 → <article id="article1"></article>
+  -->
+
+
+  <!-- ============================================================
+       SECTION 11: EMMET SHORTCUTS (VS Code productivity)
+       ============================================================ -->
+
+  <hr>
+  <h2>11. Emmet Shortcuts — Speed Up HTML Writing</h2>
+
+  <!--
+    EMMET — Built into VS Code, WebStorm, Sublime Text
+    ====================================================
+    Emmet lets you write shorthand and expand it to full HTML with Tab.
+
+    MOST USEFUL SHORTCUTS:
+    -----------------------
+    !                   → Full HTML boilerplate (DOCTYPE, html, head, body)
+    h1                  → <h1></h1>
+    p                   → <p></p>
+    p{Hello World}      → <p>Hello World</p>
+    p>a                 → <p><a href=""></a></p>
+    h1+h2               → <h1></h1>  followed by  <h2></h2>  (siblings)
+    ul>li*4             → <ul> with 4 <li> items
+    ul>li*4>{Item $}    → 4 <li> items with text: Item 1, Item 2, Item 3, Item 4
+    ol>li*3             → <ol> with 3 <li> items
+    ul>(li>p>a)*3       → <ul> with 3 items, each containing <p><a>
+    div.container       → <div class="container"></div>
+    p#intro             → <p id="intro"></p>
+    input:text          → <input type="text" name="" id="">
+    input:password      → <input type="password" name="" id="">
+    input:submit        → <input type="submit" value="">
+    form>input:text+input:submit → form with a text field and submit button
+    lorem               → generates a Lorem Ipsum paragraph
+    lorem5              → generates 5 Lorem Ipsum words
+    lorem30             → generates 30 Lorem Ipsum words
+
+    PRACTICE THESE — they save enormous time in real projects.
+  -->
+
+
+  <!-- ============================================================
+       SECTION 12: TABLES
+       ============================================================ -->
+
+  <hr>
+  <h2>12. Tables</h2>
+
+  <h3>Basic Table</h3>
+  <table>
+    <tr>
+      <td>Sr. No.</td>
+      <td>Name</td>
+      <td>Marks</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Vipin Soni</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Deepchand</td>
+      <td>80</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Vinay Mahla</td>
+      <td>100</td>
+    </tr>
+  </table>
+  <!--
+    TABLE BASIC STRUCTURE:
+    <table>  → Container for the entire table
+    <tr>     → Table Row — one horizontal row
+    <td>     → Table Data cell — one cell in a row
+
+    Note: All HTML tags should be LOWERCASE. <LI>, <TR> etc. are technically
+    valid in older HTML, but lowercase is the modern industry standard.
+  -->
+
+  <h3>Complete Table with thead, tbody, tfoot + rowspan + colspan</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Student ID</th>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Age</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
         <td>123456</td>
         <td>Vipin</td>
-        <td>feMale</td>
+        <td>Male</td>
         <td>17</td>
-       </tr>
+      </tr>
 
-      
-       <tr>
+      <tr>
         <td>10001</td>
-        <td>harsh</td>
-        <td>Rather not Say</td>
-        <td rowspan="2">18</td>          
-            <!--  The td element is used to define a data cell in a table. -->
-       </tr>
-                         <!-- this rowspan will extend the same data in how many rows we want to expand the data. -->
-       
-       <tr>
+        <td>Harsh</td>
+        <td>Rather Not Say</td>
+        <td rowspan="2">18</td>
+        <!--
+          rowspan="2" → This cell spans 2 rows vertically.
+          The number means: "occupy this cell AND the cell below me in the next row."
+          So the next <tr> should have ONE FEWER <td> in the same column position.
+        -->
+      </tr>
+
+      <tr>
         <td>123678</td>
         <td>Ankit</td>
-        <td>feMale</td>
-       </tr>
+        <td>Female</td>
+        <!-- No <td> for Age here — it's covered by rowspan="2" above -->
+      </tr>
 
-    
-
-       <tr>
-        <td>1234365436</td>
+      <tr>
+        <td>1234365</td>
         <td>Deepchand</td>
-        <td colspan="2">Custom</td>
-       </tr>
-                        <!-- this colspan will extend column upto how much column we want to expand. -->
+        <td colspan="2">Custom (spans Gender + Age columns)</td>
+        <!--
+          colspan="2" → This cell spans 2 columns horizontally.
+          The number means: "occupy this cell AND the cell to my right."
+          So this <tr> should have ONE FEWER <td> (since one cell covers two).
+        -->
+      </tr>
     </tbody>
-     </table>          
 
-     <br><br><br>      
+    <tfoot>
+      <tr>
+        <td colspan="4">End of Student Records — Total: 4 Students</td>
+      </tr>
+    </tfoot>
+  </table>
 
+  <!--
+    COMPLETE TABLE STRUCTURE — Industry Standard:
+    ================================================
+    <table>           → The table container
+      <thead>         → Table Header section (column names / headings)
+        <tr>          → Row inside thead
+          <th>        → Header Cell (bold + centered by default)
+      <tbody>         → Table Body section (the actual data rows)
+        <tr>          → Data rows
+          <td>        → Data Cell (regular text)
+      <tfoot>         → Table Footer section (totals, summaries)
+        <tr>
+          <td>
 
-     <table border="1">
-<thead><th>123451</th>
-<th>254re32</th>
-<th>33e3e</th>
-<th>4321342</th>
-<th>53423</th>
-</thead>
+    WHY USE thead / tbody / tfoot?
+    → Semantic structure — screen readers and browsers understand the table better.
+    → You can style header and footer differently with CSS (thead { background: #333; }).
+    → When printing a long table, thead/tfoot can repeat on each page.
+    → Accessibility: screen readers announce "this is the column header for..."
 
-<tbody><tr><td>63334</td>
-<td>7341342</td>
-<td>833132</td>
-<td>91323</td>
-<td rowspan="3">123445</td>
+    SPANNING:
+    ---------
+    rowspan="N"   → Cell stretches across N rows (vertically)
+    colspan="N"   → Cell stretches across N columns (horizontally)
 
-<tr><td>12345234</td>
-<td>234t123</td>
-<td>2342334</td>
-<td>23ty45</td>
-</tr>
-
-<tr><td>123456</td>
-<td>234567</td>
-<td>123456</td>
-<td>12345</td></tr>
-
-<tfoot>
-    <tr>
-        <td colspan="3">hello</td>  
-        <td>qwerty</td>
-    </tr></tfoot>
-
-     </table>
-
-
-
-
-
-     <form>
-          
-         <label for="email">Enter Email ID:</label>
-        <input required type="text" id="email" placeholder="enter your email">
-        <br>
-        <br>
-        <label for="password">Enter Password</label>
-        <input type="password" id="password" placeholder="enter your password"> 
-        <!-- in label "for" and in input "id" must have same address. -->
-         <!-- placeholder attributes describe the label more briefly inside the input tag. -->
-        <br>
-        <br>
+    STYLING TABLES:
+    ----------------
+    In modern HTML, use CSS instead of border="" attribute:
+      table  { border-collapse: collapse; }
+      td, th { border: 1px solid #333; padding: 8px; }
+    
+    border-collapse: collapse; → removes the double-border gap between cells
+    border-collapse: separate; → keeps cells visually separate (default)
+  -->
 
 
-        <input type="submit" value="click here" >
-        <button>submit</button>
-        <!-- there are two methods to make a button    input and button -->
-     </form>
+  <!-- ============================================================
+       SECTION 13: FORMS — Part 1 (Basic Login Form)
+       ============================================================ -->
 
+  <hr>
+  <h2 id="section-forms">13. Forms</h2>
 
+  <h3>Basic Login Form</h3>
 
-     <form style="border: 2px black solid;">
+  <form action="#" method="post">
 
-        <fieldset>
-            <LEGEND><h3>html form</h3></LEGEND>
-        <label for="datepicker">choose your date of birth:</label>
-        <input type="date" id="datepicker">
-        <br>
-        <input type="color">
-        <br>
-        <input type="datetime-local">
-        <br>
-        <input type="week">
-        <br>
-        <input type="month">
-        <br>
-        <input type="number">
-
-<br>
-<br>
-<br>
-
-<label for="selector1">choose your dishes</label>
-      <select name="dishes" id="selector1">
-        <option value="select">select</option>
-      <option value="maggi">maggi</option>
-      <option value="kurkure">kurkure</option>
-      <option value="chips">chips</option></select>
-      <br>
-
-      <button>submit</button>
-
-
-      <br>
-      <br>
-
-      <textarea name="text1" id="text1" cols="10" rows="10" placeholder="enter your feedback......."></textarea>
-   </fieldset>
-   
-    </form>
-
-
-<br><br><br>
-
-
-
-
-<!-- input tags in html -->
-
-    <form style="border: 2px black solid;"> 
-        <label for="textfield1">text field</label>
-        <input type="text" name="textfield1" id="textfield1">
-<br><br>
-
-
-        <label for="button1">submit button creation</label>
-        <input type="submit" name="button1" id="button1" value="subscribe">
-
-<br><br>
-
-
-
-
-
-<label for="radio1">Male </label>
-        <input type="radio" name="radio1" id="radio1" >
-
-        <label for="radio2">feMale </label>
-        <input type="radio" name="radio1" id="radio1" >
-
-<label for="radio3">others</label>
-        <input type="radio" name="radio1" id="radio1" >
-
-<!-- to allow only one radio button selection,
-  you need to group the buttons together by giving them the same name attribute in the HTML code. -->
-
-
-
-
-
-
-
-
-
-
-  <br><br>
-  <label for="checkbox1">coffee</label>
-          <input type="checkbox" name="checkbox1" id="checkbox1" >
-
-
-          <label for="checkbox2">chai</label>
-                  <input type="checkbox" name="checkbox2" id="checkbox2" >
-        
-
-                  <br><br>
-
-    <label for="fileselection">choose file :</label>
-    <input type="file" name="file selection" id="=fileselection">
-    </form>
-
+    <label for="email">Enter Email ID:</label>
+    <input type="text" id="email" name="email" placeholder="e.g. user@example.com" required>
     <br><br>
 
-    <input type="image" name="image button" id="image button" alt="click here" src="img.png"
-    width="40px" height="40px" >
-<!-- to make an image a button -->
+    <label for="password">Enter Password:</label>
+    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+    <br><br>
 
-    <br>
-    <br>
+    <!-- Two ways to create a submit button: -->
+    <input type="submit" value="Login">
+    &nbsp;
+    <button type="submit">Login (button tag)</button>
 
-    <label for="password1">enter password</label>
-    <input type="password" name="password1" id="password1">
-<!-- used to hide the password  -->
+  </form>
+
+  <!--
+    <form> — Form Tag
+    ==================
+    - Groups all input fields together and handles data submission.
+    - Key attributes:
+        action  → URL where form data is sent when submitted
+                   e.g. action="/login"  or  action="process.php"
+        method  → How data is sent:
+                   GET  → data visible in URL (for searches, non-sensitive data)
+                   POST → data hidden in request body (for passwords, personal info — USE THIS for login)
+
+    <label> — Form Label
+    =====================
+    - Describes what an input field expects.
+    - for="" must EXACTLY MATCH the id="" of the corresponding input.
+    - Clicking the label also focuses the input (improves UX & accessibility).
+    - Example: <label for="email"> + <input id="email"> — "email" must match.
+
+    <input> — Input Field
+    ======================
+    - A self-closing void element (no </input> needed).
+    - The type="" attribute determines what kind of input it is.
+    - name=""  → The key used when sending data to the server (always include it).
+    - id=""    → For linking with <label for="..."> and CSS/JS targeting.
+
+    placeholder=""  → Greyed-out hint text shown INSIDE the input before the user types.
+    required        → Makes the field mandatory. Form won't submit if empty.
+
+    <button> vs <input type="submit">:
+    ------------------------------------
+    Both create a submit button. Differences:
+    <input type="submit" value="text"> → Simple, self-closing
+    <button type="submit">text</button> → Can contain HTML inside (icons, bold text, etc.) — MORE FLEXIBLE
+    Always specify type="submit" on <button> inside a form to be explicit.
+  -->
 
 
-<br>
-<br>
+  <!-- ============================================================
+       SECTION 14: FORMS — Part 2 (All Input Types)
+       ============================================================ -->
 
-<label for="datepicker">choose your date of birth:</label>
-        <input type="date" id="datepicker">
+  <hr>
+  <h3>All Important Input Types</h3>
+
+  <form action="#" method="post">
+    <fieldset>
+      <legend><h3>Student Registration Form</h3></legend>
+
+      <!-- Text -->
+      <label for="fullname">Full Name:</label>
+      <input type="text" id="fullname" name="fullname" placeholder="Enter full name">
+      <br><br>
+
+      <!-- Password -->
+      <label for="pass1">Password:</label>
+      <input type="password" id="pass1" name="pass1" placeholder="Enter password">
+      <br><br>
+
+      <!-- Email -->
+      <label for="emailfield">Email:</label>
+      <input type="email" id="emailfield" name="emailfield" placeholder="user@example.com">
+      <br><br>
+
+      <!-- Number -->
+      <label for="age">Age:</label>
+      <input type="number" id="age" name="age" min="1" max="120">
+      <br><br>
+
+      <!-- Date -->
+      <label for="dob">Date of Birth:</label>
+      <input type="date" id="dob" name="dob">
+      <br><br>
+
+      <!-- Date and Time -->
+      <label for="datetime1">Date &amp; Time:</label>
+      <input type="datetime-local" id="datetime1" name="datetime1">
+      <br><br>
+
+      <!-- Week -->
+      <label for="week1">Select Week:</label>
+      <input type="week" id="week1" name="week1">
+      <br><br>
+
+      <!-- Month -->
+      <label for="month1">Select Month:</label>
+      <input type="month" id="month1" name="month1">
+      <br><br>
+
+      <!-- Color Picker -->
+      <label for="favcolor">Favourite Colour:</label>
+      <input type="color" id="favcolor" name="favcolor">
+      <br><br>
+
+      <!-- Radio Buttons (Gender) -->
+      <p>Gender:</p>
+      <label for="male">Male</label>
+      <input type="radio" id="male" name="gender" value="male">
+
+      <label for="female">Female</label>
+      <input type="radio" id="female" name="gender" value="female">
+
+      <label for="other">Other</label>
+      <input type="radio" id="other" name="gender" value="other">
+      <br><br>
+
+      <!-- Checkboxes -->
+      <p>Preferred Drink:</p>
+      <label for="coffee">Coffee</label>
+      <input type="checkbox" id="coffee" name="drink" value="coffee">
+
+      <label for="chai">Chai</label>
+      <input type="checkbox" id="chai" name="drink" value="chai">
+
+      <label for="juice">Juice</label>
+      <input type="checkbox" id="juice" name="drink" value="juice">
+      <br><br>
+
+      <!-- Dropdown / Select -->
+      <label for="dishes">Favourite Dish:</label>
+      <select id="dishes" name="dishes">
+        <option value="">-- Select --</option>
+        <option value="maggi">Maggi</option>
+        <option value="pizza">Pizza</option>
+        <option value="biryani">Biryani</option>
+        <option value="chips">Chips</option>
+      </select>
+      <br><br>
+
+      <!-- Textarea -->
+      <label for="feedback">Feedback:</label><br>
+      <textarea id="feedback" name="feedback" rows="5" cols="40" placeholder="Write your feedback here..."></textarea>
+      <br><br>
+
+      <!-- File Upload -->
+      <label for="resume">Upload Resume:</label>
+      <input type="file" id="resume" name="resume">
+      <br><br>
+
+      <!-- Image Button -->
+      <input type="image" src="img.png" alt="Submit Button" width="40" height="40">
+      <br><br>
+
+      <!-- Submit -->
+      <button type="submit">Submit Form</button>
+
+    </fieldset>
+  </form>
+
+  <!--
+    INPUT TYPES — Full Reference
+    =============================
+    type="text"           → Single-line text input (default)
+    type="password"       → Text input where characters are hidden (shown as ●●●)
+    type="email"          → Text input with email format validation (@, domain check)
+    type="number"         → Numeric input with up/down arrows; use min/max to set range
+    type="date"           → Date picker (shows calendar)
+    type="datetime-local" → Date + time picker (no timezone)
+    type="week"           → Week selector
+    type="month"          → Month + year selector
+    type="color"          → Color picker
+    type="file"           → File upload button (opens OS file explorer)
+    type="submit"         → Submit button (sends the form)
+    type="image"          → Image that acts as a submit button (src="" sets the image)
+    type="radio"          → One circular option from a group
+    type="checkbox"       → One or more tick-box options
+
+    RADIO BUTTONS — Important Rule:
+    ---------------------------------
+    - All radio buttons in ONE GROUP must share the same name="" value.
+    - But each must have a UNIQUE id="" for its label's for="" to link correctly.
+    - The name="" creates the group; only ONE option in the group can be selected.
+    - value="" is what gets sent to the server when that option is selected.
+    - WRONG (your original): all three had id="radio1" — duplicate ids are invalid.
+    - CORRECT: name="gender" is same, but id="male", id="female", id="other" are unique.
+
+    CHECKBOXES — vs Radio:
+    ------------------------
+    - Multiple checkboxes CAN be selected at once.
+    - Each checkbox should have its own unique id="" and name="" (or same name for a group).
+
+    <select> — Dropdown
+    ====================
+    - Creates a dropdown menu.
+    - <option value=""> → Each choice inside. value="" is what's sent to the server.
+    - Always include a default empty option: <option value="">-- Select --</option>
+
+    <textarea> — Multi-line Text Input
+    ====================================
+    - For longer text input (comments, feedback, messages).
+    - rows=""  → Visible height in number of text lines
+    - cols=""  → Visible width in number of characters
+    - Can be resized by the user (control with CSS: resize: none;)
+    - Close tag is REQUIRED: </textarea>
+
+    <fieldset> and <legend>:
+    -------------------------
+    <fieldset> → Groups related form fields visually with a border box.
+    <legend>   → Title/caption shown on the top border of the fieldset.
+    Use for: grouping "Personal Info", "Payment Details", etc. in a long form.
+    
+    NOTE: Do NOT put <h3> inside <legend> — it's invalid HTML. Use CSS to style
+    the legend text instead: legend { font-size: 1.2em; font-weight: bold; }
+  -->
 
 
+  <!-- ============================================================
+       SECTION 15: SEMANTIC/INTERACTIVE TAGS — details & summary
+       ============================================================ -->
 
-    <section>
-        <h2>Questions with Hidden Answers </h2>
+  <hr>
+  <h2>15. Semantic &amp; Interactive Tags</h2>
+
+  <section>
+    <h3>FAQ — Expand/Collapse with &lt;details&gt; and &lt;summary&gt;</h3>
+
+    <details>
+      <summary>What is the difference between &lt;section&gt; and &lt;div&gt;?</summary>
+      <p>
+        <strong>&lt;section&gt;</strong> is a semantic tag — it tells the browser and search engines
+        that this block is a distinct thematic section of the page, usually with its own heading.
+        <br><br>
+        <strong>&lt;div&gt;</strong> is non-semantic — it's just a generic container with no meaning.
+        Use it only for layout/styling when no semantic tag fits.
+      </p>
+    </details>
+
+    <details>
+      <summary>What is the difference between &lt;strong&gt; and &lt;b&gt;?</summary>
+      <p>
+        Both make text bold visually. But <strong>&lt;strong&gt;</strong> also tells screen readers
+        and search engines "this content is important." &lt;b&gt; is purely visual — no semantic meaning.
+        Always prefer &lt;strong&gt;.
+      </p>
+    </details>
+
+    <details>
+      <summary>What is the difference between id and class?</summary>
+      <p>
+        <strong>id</strong> = unique identifier, ONE element per page. Like an Aadhaar number.<br>
+        <strong>class</strong> = reusable label, MANY elements can share it. Like a college batch.
+      </p>
+    </details>
+  </section>
+
+  <!--
+    <details> and <summary> — Accordion / Expand-Collapse
+    =======================================================
+    <details>  → Creates a collapsible widget. Closed by default.
+                  Add "open" attribute to start expanded: <details open>
+    <summary>  → The always-visible clickable heading of the <details> block.
+                  Clicking it toggles the rest of the content open/closed.
+
+    Use for: FAQs, show/hide sections, collapsible instructions.
+    No JavaScript needed — pure HTML!
+
+    ---
+
+    <section>  → Semantic tag for a thematic group of content.
+                  Should have a heading (<h2>, <h3>, etc.) inside it.
+                  Use instead of <div> when the content forms a meaningful section.
+  -->
 
 
-        <details>
-            <summary>What is difference between section and div tag??</summary>
-            section: Semantic, indicates a thematic grouping, often with a heading.
-                div: Non-semantic, general-purpose container for styling and layout.
-        </details>
-    </section>
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
 
-     </body>
-     </html>
+  <hr>
+  <footer>
+    <p>&copy; 2024 Ravi Yadav — HTML Learning Notes Part 2</p>
+    <p><a href="1_basics.html">← Back to Part 1</a></p>
+  </footer>
+
+</body>
+</html>
+
+<!--
+  ================================================================
+  QUICK REVISION CHEAT SHEET — PART 2
+  ================================================================
+
+  TAGS vs ELEMENTS:
+  -----------------
+  Tag     → just the label:      <p>  or  </p>
+  Element → full unit:           <p>content</p>
+
+  HEADINGS:
+  ---------
+  <h1> to <h6>   → h1 = biggest, h6 = smallest. ONE <h1> per page.
+  NOTE: h7, h8 etc. do NOT exist — they render like plain text.
+
+  LINKS:
+  ------
+  <a href="URL">           → External link
+  <a href="#id">           → Jump to section on same page
+  <a href="mailto:...">    → Email link
+  <a href="tel:...">       → Phone link
+  target="_blank"          → Open in new tab
+  rel="noopener noreferrer"→ ALWAYS add with target="_blank" (security)
+
+  IMAGES:
+  -------
+  <img src="path" alt="description">  → Self-closing, alt is MANDATORY
+  Formats: .jpg (photos), .png (transparency), .svg (icons), .webp (modern)
+
+  TEXT FORMATTING:
+  ----------------
+  <strong>  → Bold + important (PREFER over <b>)
+  <b>       → Bold only (avoid in modern HTML)
+  <em>      → Italic + emphasized (PREFER over <i>)
+  <i>       → Italic only
+  <u>       → Underline
+  <s>       → Strikethrough (content no longer accurate)
+  <sup>     → Superscript (x²)
+  <sub>     → Subscript (H₂O)
+
+  BLOCK vs INLINE:
+  ----------------
+  Block:  new line, full width  → div, p, h1, ul, table, form, section
+  Inline: same line, content width only → span, a, strong, em, img
+  display: inline;        → converts block to inline
+  display: block;         → converts inline to block
+  display: inline-block;  → inline flow + block sizing (best of both)
+
+  id vs class:
+  ------------
+  id    → unique per page, one element  → #para1  →  <p id="para1">
+  class → reusable, many elements       → .card   →  <p class="card">
+
+  TABLES:
+  -------
+  <table>   → container
+  <thead>   → header section
+  <tbody>   → body section
+  <tfoot>   → footer section
+  <tr>      → table row
+  <th>      → header cell (bold, centered)
+  <td>      → data cell
+  rowspan="N" → span N rows vertically
+  colspan="N" → span N columns horizontally
+  CSS: border-collapse: collapse; for clean borders
+
+  FORMS:
+  ------
+  <form action="" method="get|post">  → container
+  <label for="id">   → must match input's id
+  <input type="..."> → self-closing
+  <textarea>         → multi-line text
+  <select><option>   → dropdown
+  <fieldset><legend> → group fields with a border box
+  <button type="submit"> → preferred submit button
+
+  INPUT TYPES:
+  ------------
+  text, password, email, number, date, datetime-local,
+  week, month, color, file, submit, image, radio, checkbox
+
+  RADIO: all in group share same name=""  but unique id="" values
+  CHECKBOX: multiple can be selected at once
+
+  INTERACTIVE:
+  ------------
+  <details open>     → collapsible block (open = starts expanded)
+  <summary>          → the clickable title of <details>
+  <section>          → semantic thematic block with a heading
+  <fieldset>         → groups form fields visually
+  <legend>           → caption on fieldset border
+
+  EMMET SHORTCUTS:
+  ----------------
+  !              → Full boilerplate
+  ul>li*4        → ul with 4 li items
+  ol>li*3        → ol with 3 li items
+  div.container  → <div class="container">
+  p#intro        → <p id="intro">
+  p{Hello}       → <p>Hello</p>
+  lorem          → Lorem Ipsum paragraph
+  lorem5         → 5 lorem words
+
+  KEY INTERVIEW POINTS:
+  ---------------------
+  1. All HTML tags should be LOWERCASE (industry standard)
+  2. id must be unique per page; class can be shared
+  3. Always add alt="" to <img> (accessibility + SEO)
+  4. Radio buttons need SAME name="" but UNIQUE id="" values
+  5. Use <label for=""> linked to input's id="" (always)
+  6. Use name="" on inputs — without it, data isn't sent to server
+  7. border-collapse: collapse; for clean table borders
+  8. <strong>/<em> over <b>/<i> for semantic HTML
+  9. Do NOT nest <h3>/<h4> inside <dl>, <legend>, <fieldset>
+  10. Use POST method for sensitive data (passwords, personal info)
+  ================================================================
+-->
