@@ -1,0 +1,1990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS File 1 — Foundations</title>
+
+  <!--
+    ================================================================
+    WHAT IS CSS?
+    ================================================================
+    CSS = Cascading Style Sheets.
+
+    HTML builds the STRUCTURE of a webpage (the skeleton).
+    CSS adds the APPEARANCE — colors, fonts, spacing, layout (the skin).
+
+    Without CSS, every webpage looks like a plain text document.
+    With CSS, the same HTML can look like a beautiful, professional website.
+
+    Real-world analogy:
+    → HTML is the blueprint of a house (walls, rooms, doors).
+    → CSS is the interior design (paint colors, furniture, lighting).
+
+    The word "Cascading" means:
+    → Styles flow downward — a style set on a parent element
+      can flow (cascade) down to its child elements.
+    → When two rules conflict, there are clear rules about
+      which one wins (we'll cover this in "Specificity" below).
+
+    ================================================================
+    FILE TOPICS:
+    ================================================================
+    1.  3 Ways to Write CSS (Inline, Internal, External)
+    2.  CSS Syntax — How a CSS Rule is Written
+    3.  Selectors — How to Target HTML Elements
+    4.  The Cascade — What Happens When Rules Conflict
+    5.  Specificity — Which Rule Wins?
+    6.  Colors — hex, rgb, rgba, hsl, named
+    7.  Backgrounds
+    8.  Typography — fonts, size, weight, line-height, etc.
+    9.  CSS Units — px, %, em, rem (critical difference)
+    10. CSS Variables (Custom Properties)
+    ================================================================
+  -->
+
+  <!-- ============================================================
+       INTERNAL CSS — Written inside a <style> tag in <head>
+       All the CSS for this file is written here so you can
+       see live results when you open this file in a browser.
+       ============================================================ -->
+
+  <style>
+
+    /* ============================================================
+       TOPIC 1: CSS SYNTAX — HOW A CSS RULE IS WRITTEN
+       ============================================================
+
+       A CSS rule has two parts:
+       1. SELECTOR  → Which HTML element to style
+       2. DECLARATION BLOCK → The styles to apply, inside { }
+
+       Each declaration has:
+       → PROPERTY  : the style you want to change (e.g. color)
+       → VALUE     : what you want to set it to (e.g. red)
+       → Separated by a colon (:) and ended with a semicolon (;)
+
+       STRUCTURE:
+       ----------
+       selector {
+           property: value;
+           property: value;
+       }
+
+       EXAMPLE:
+       --------
+       h1 {
+           color: blue;
+           font-size: 32px;
+       }
+
+       → This says: "Find all <h1> elements on the page
+         and make their text blue, 32px in size."
+
+       COMMENTS IN CSS:
+       ----------------
+       CSS comments start with / * and end with * /.
+       Example: / * This is a CSS comment — ignored by the browser * /
+       → There is NO single-line comment (//) in CSS.
+       → Always use CSS comment syntax for both single and multi-line comments.
+    
+
+    /* ============================================================
+       GLOBAL RESET — Industry Standard Starting Point
+       ============================================================
+
+       By default, every browser (Chrome, Firefox, Safari) adds
+       its own default margin, padding, and styling to elements.
+       This causes pages to look different across browsers.
+
+       The fix: reset margin and padding to 0 on everything,
+       and use box-sizing: border-box (explained in File 2).
+
+       This is the FIRST thing written in every real project.
+    */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    /*
+      * is the UNIVERSAL SELECTOR — targets EVERY element on the page.
+      We'll cover selectors in detail below.
+    */
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background-color: #f0f4f8;
+      color: #1a1a2e;
+      line-height: 1.7;
+      padding: 20px;
+    }
+
+    /* Page layout for readability */
+    .page-wrapper {
+      max-width: 860px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      padding: 40px;
+      border-radius: 10px;
+    }
+
+    /* ============================================================
+       TOPIC 2: THE 3 WAYS TO WRITE CSS
+       ============================================================
+
+       METHOD 1: INLINE CSS
+       ---------------------
+       Written directly on an HTML element using the style="" attribute.
+
+       Example in HTML:
+       <h1 style="color: red; font-size: 40px;">Hello</h1>
+
+       ✅ Use when: quick testing, email templates, JS-generated styles
+       ❌ Avoid because:
+          → Hard to maintain — you'd have to edit every element separately
+          → Highest specificity — overrides everything (makes debugging hell)
+          → Mixes content and presentation (bad practice)
+
+       ---------------------------------------------------------------
+
+       METHOD 2: INTERNAL CSS
+       -----------------------
+       Written inside a <style> tag in the <head> section.
+       This is what we're using in this entire file.
+
+       Example:
+       <head>
+         <style>
+           h1 { color: blue; }
+         <\/style>
+       </head>
+
+       ✅ Use when: single-page demos, learning, quick prototyping
+       ❌ Avoid for multi-page websites because:
+          → You'd have to copy the same CSS into every HTML file
+          → If you change a color, you update 10 files instead of 1
+
+       ---------------------------------------------------------------
+
+       METHOD 3: EXTERNAL CSS (INDUSTRY STANDARD ✅)
+       -----------------------------------------------
+       CSS written in a separate .css file, linked to HTML with <link>.
+
+       In your HTML <head>:
+       <link rel="stylesheet" href="style.css">
+
+       In your style.css file:
+       h1 { color: blue; }
+
+       ✅ Use ALWAYS in real projects because:
+          → One CSS file styles ALL your HTML pages
+          → Change one file → entire website updates
+          → Keeps HTML clean (only content, no styling)
+          → Browser CACHES the CSS file → faster load times
+          → Team members can work on HTML and CSS separately
+
+       PRIORITY ORDER (which overrides which):
+       Inline CSS  >  Internal CSS  >  External CSS
+       (Inline wins because it's the most specific)
+    */
+
+
+    /* ============================================================
+       TOPIC 3: SELECTORS — HOW TO TARGET HTML ELEMENTS
+       ============================================================
+
+       A selector tells CSS: "Apply these styles to THIS element."
+       There are many types. These are the ones you MUST know.
+    */
+
+    /* -----------------------------------------------------------
+       3A. ELEMENT SELECTOR (Type Selector)
+       -----------------------------------------------------------
+       Targets ALL elements of that tag type on the page.
+       Syntax: just write the tag name (no # or . prefix)
+    */
+
+    h1 {
+      color: #0f3460;
+      font-size: 2.2rem;
+      margin-bottom: 8px;
+    }
+    /*
+      This targets EVERY <h1> on the page.
+      If you have 3 <h1> tags, all 3 get this style.
+
+      Real-world use: Set a default style for all paragraphs,
+      all headings, all links — the base look of your page.
+    */
+
+    h2 {
+      color: #e94560;
+      font-size: 1.5rem;
+      margin: 30px 0 10px 0;
+      padding-bottom: 6px;
+      border-bottom: 2px solid #e94560;
+    }
+
+    h3 {
+      color: #0f3460;
+      font-size: 1.15rem;
+      margin: 20px 0 8px 0;
+    }
+
+    p {
+      margin-bottom: 14px;
+      color: #333;
+    }
+
+
+    /* -----------------------------------------------------------
+       3B. CLASS SELECTOR
+       -----------------------------------------------------------
+       Targets elements that have a specific class="" attribute.
+       Syntax: .classname  (dot before the name)
+    */
+
+    .highlight-box {
+      background-color: #fff8e1;
+      border-left: 4px solid #f39c12;
+      padding: 14px 18px;
+      margin: 14px 0;
+      border-radius: 4px;
+    }
+    /*
+      In HTML you write: <div class="highlight-box">...</div>
+      The dot (.) tells CSS "this is a class name".
+
+      KEY FACTS about classes:
+      → Multiple elements CAN share the same class
+      → One element CAN have multiple classes:
+        <p class="highlight-box bold-text red-text">
+      → Classes are the MOST USED selector in real projects
+      → Convention: use lowercase, words separated by hyphens
+        (kebab-case): my-class-name  ✅
+        NOT camelCase: myClassName   ❌ (works but not standard in CSS)
+    */
+
+    .code-box {
+      background-color: #1e1e2e;
+      color: #cdd6f4;
+      padding: 16px 20px;
+      border-radius: 6px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.9rem;
+      margin: 14px 0;
+      white-space: pre;
+      overflow-x: auto;
+      line-height: 1.8;
+    }
+
+    .result-box {
+      border: 2px dashed #0f3460;
+      padding: 20px;
+      margin: 14px 0;
+      border-radius: 6px;
+      background-color: #f8fbff;
+    }
+
+    .result-label {
+      font-size: 0.75rem;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .topic-divider {
+      border: none;
+      border-top: 1px solid #e0e0e0;
+      margin: 40px 0;
+    }
+
+    .tag {
+      display: inline-block;
+      background-color: #e94560;
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+
+    .tag-green { background-color: #27ae60; }
+    .tag-blue  { background-color: #2980b9; }
+    .tag-orange{ background-color: #e67e22; }
+
+
+    /* -----------------------------------------------------------
+       3C. ID SELECTOR
+       -----------------------------------------------------------
+       Targets ONE specific element with a unique id="" attribute.
+       Syntax: #idname  (hash/pound before the name)
+    */
+
+    #main-title {
+      text-align: center;
+      padding: 20px 0 10px 0;
+    }
+    /*
+      In HTML you write: <h1 id="main-title">...</h1>
+      The hash (#) tells CSS "this is an id name".
+
+      KEY FACTS about id selectors:
+      → id must be UNIQUE on the page — only ONE element per id
+      → id has HIGH SPECIFICITY — it overrides class and element styles
+        (we'll cover this in the Specificity section below)
+      → In real projects, id selectors in CSS are RARE
+        (use classes for styling, id for JavaScript targeting)
+      → Rule of thumb: class for styling, id for JS
+    */
+
+
+    /* -----------------------------------------------------------
+       3D. UNIVERSAL SELECTOR
+       -----------------------------------------------------------
+       Targets EVERY element on the page.
+       Syntax: *
+    */
+
+    /* Already shown at top: * { margin: 0; padding: 0; } */
+
+    /*
+      * { color: red; }  → makes ALL text red on the entire page
+
+      Use sparingly — it's powerful and can be slow on huge pages.
+      Main use: the CSS reset at the top of every project.
+    */
+
+
+    /* -----------------------------------------------------------
+       3E. GROUPING SELECTOR
+       -----------------------------------------------------------
+       Apply the SAME styles to multiple selectors at once.
+       Syntax: selector1, selector2, selector3 { }
+    */
+
+    .demo-group-h1,
+    .demo-group-h2,
+    .demo-group-h3 {
+      font-family: Georgia, serif;
+    }
+    /*
+      Instead of writing:
+        h1 { font-family: Georgia; }
+        h2 { font-family: Georgia; }
+        h3 { font-family: Georgia; }
+
+      Write it ONCE with grouping:
+        h1, h2, h3 { font-family: Georgia; }
+
+      This keeps your CSS DRY (Don't Repeat Yourself) — a key
+      software engineering principle.
+    */
+
+
+    /* -----------------------------------------------------------
+       3F. DESCENDANT SELECTOR
+       -----------------------------------------------------------
+       Targets an element that is INSIDE another element.
+       Syntax: parent child  (space between them)
+    */
+
+    .demo-card p {
+      color: #555;
+      font-style: italic;
+    }
+    /*
+      This ONLY targets <p> tags that are INSIDE a .demo-card div.
+      Other <p> tags on the page are NOT affected.
+
+      Real-world use: style the paragraph inside a card differently
+      than all other paragraphs on the page.
+
+      Example HTML:
+      <div class="demo-card">
+        <p>This IS styled ✅</p>       → inside .demo-card, gets the style
+      </div>
+      <p>This is NOT styled ❌</p>     → outside .demo-card, no effect
+    */
+
+    .demo-card {
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      padding: 16px;
+      border-radius: 6px;
+      margin: 10px 0;
+    }
+
+
+    /* -----------------------------------------------------------
+       3G. CHILD SELECTOR
+       -----------------------------------------------------------
+       Targets a DIRECT child only (not grandchildren).
+       Syntax: parent > direct-child
+    */
+
+    .demo-parent > p {
+      color: #e94560;
+      font-weight: bold;
+    }
+    /*
+      Example:
+      <div class="demo-parent">
+        <p>Direct child ✅ → gets red bold style</p>
+        <div>
+          <p>Grandchild ❌ → NOT affected (not a direct child)</p>
+        </div>
+      </div>
+
+      Difference:
+      .parent p   → targets ALL <p> descendants (any depth)
+      .parent > p → targets ONLY direct <p> children
+    */
+
+    .demo-parent { background: #eef; padding: 14px; border-radius: 6px; }
+    .demo-parent div { background: #ddf; padding: 10px; margin-top: 8px; border-radius: 4px; }
+    .demo-parent div p { color: #333 !important; font-weight: normal; }
+
+
+    /* ============================================================
+       TOPIC 4: THE CASCADE — WHAT HAPPENS WHEN RULES CONFLICT
+       ============================================================
+
+       "Cascading" is the C in CSS. When two rules target the
+       same element and set the same property, CSS must decide
+       which one to use.
+
+       The CASCADE follows this order of priority:
+       (higher number = higher priority = wins)
+
+       1. Browser default styles          (lowest priority)
+       2. External CSS file styles
+       3. Internal <style> tag styles
+       4. Inline style=""                 (highest priority)
+
+       Within the same source, these factors decide the winner:
+       1. Specificity (explained below)
+       2. Order — the LAST rule written wins (if specificity is equal)
+
+       EXAMPLE OF ORDER:
+       -----------------
+       p { color: red; }     ← written first
+       p { color: blue; }    ← written second → WINS (blue)
+
+       The paragraph will be BLUE because the second rule
+       comes later in the file and overrides the first.
+       This is called "the last rule wins" when specificity is equal.
+    */
+
+
+    /* ============================================================
+       TOPIC 5: SPECIFICITY — WHICH RULE WINS?
+       ============================================================
+
+       When two CSS rules target the same element with the
+       same property, SPECIFICITY decides which rule wins.
+
+       Think of specificity as a SCORE SYSTEM.
+       The rule with the HIGHER SCORE wins.
+
+       SPECIFICITY SCORES:
+       -------------------
+       Selector Type          Example         Score
+       ─────────────────────────────────────────────
+       Inline style           style="..."     1,0,0,0
+       ID selector            #title          0,1,0,0
+       Class selector         .box            0,0,1,0
+       Pseudo-class           :hover          0,0,1,0
+       Element selector       h1, p, div      0,0,0,1
+       Universal selector     *               0,0,0,0
+
+       HOW TO CALCULATE:
+       -----------------
+       Count the number of each type in your selector,
+       then read the score left to right — higher wins.
+
+       EXAMPLES:
+       ---------
+       h1                → 0,0,0,1   (1 element)
+       .box              → 0,0,1,0   (1 class)
+       #title            → 0,1,0,0   (1 id)
+       .box h1           → 0,0,1,1   (1 class + 1 element)
+       #nav .link        → 0,1,1,0   (1 id + 1 class)
+
+       → #nav .link (0,1,1,0) BEATS .box h1 (0,0,1,1)
+         because 0,1,1,0 > 0,0,1,1 reading left to right
+
+       THE !important EXCEPTION:
+       -------------------------
+       p { color: red !important; }
+
+       !important makes a rule win REGARDLESS of specificity.
+       It overrides EVERYTHING — even inline styles.
+
+       ⚠️ AVOID !important in real projects:
+       → It makes debugging extremely hard
+       → When you use !important to fix a problem,
+         you often create a bigger problem
+       → Sign of poorly structured CSS
+       → Acceptable use: third-party library overrides,
+         or utility classes that should ALWAYS apply
+
+       INTERVIEW TIP:
+       --------------
+       "What is specificity in CSS?"
+       Answer: Specificity is the system CSS uses to decide which
+       style rule applies when multiple rules target the same
+       element. It scores selectors: inline > id > class > element.
+       The rule with the highest score wins.
+    */
+
+
+    /* ============================================================
+       TOPIC 6: COLORS IN CSS
+       ============================================================
+
+       CSS supports 5 ways to define colors.
+       All produce the same result — just different syntax.
+    */
+
+    /* --- 6A. NAMED COLORS --- */
+    /*
+       CSS has 140+ predefined color names you can use directly.
+
+       color: red;
+       color: blue;
+       color: tomato;
+       color: steelblue;
+       color: coral;
+       color: crimson;
+       color: darkcyan;
+       color: goldenrod;
+
+       ✅ Good for: learning, quick testing, prototyping
+       ❌ Bad for: real projects — limited colors, inconsistent
+          across designs, hard to tweak
+    */
+
+    /* --- 6B. HEX COLORS --- */
+    /*
+       Hexadecimal (hex) is the MOST COMMON color format in CSS.
+       Format: #RRGGBB
+       → # prefix
+       → 6 characters: 2 for Red, 2 for Green, 2 for Blue
+       → Each pair ranges from 00 (none) to FF (maximum)
+       → Values are in base-16: 0-9 then A-F
+
+       EXAMPLES:
+       #FF0000 = pure Red    (FF red, 00 green, 00 blue)
+       #00FF00 = pure Green  (00 red, FF green, 00 blue)
+       #0000FF = pure Blue   (00 red, 00 green, FF blue)
+       #000000 = Black       (no red, no green, no blue)
+       #FFFFFF = White       (max red, max green, max blue)
+       #808080 = Grey        (half of each)
+
+       SHORTHAND (when pairs repeat):
+       #FF0000 → #F00
+       #FFFFFF → #FFF
+       #000000 → #000
+       #AABBCC → #ABC
+
+       REAL-WORLD EXAMPLES:
+       #e94560 → Vibrant pink-red (used in this file for h2)
+       #0f3460 → Deep navy blue
+       #f39c12 → Golden orange
+       #27ae60 → Emerald green
+       #2c3e50 → Dark slate (popular for dark themes)
+
+       Where to find hex colors:
+       → coolors.co         (palette generator)
+       → color.adobe.com    (professional palettes)
+       → Google "color picker" (built-in hex picker)
+       → Your design file (Figma, XD) gives you hex values
+    */
+
+    /* --- 6C. RGB COLORS --- */
+    /*
+       RGB = Red, Green, Blue
+       Format: rgb(red, green, blue)
+       Each value ranges from 0 to 255.
+
+       rgb(255, 0, 0)   = pure Red
+       rgb(0, 255, 0)   = pure Green
+       rgb(0, 0, 255)   = pure Blue
+       rgb(0, 0, 0)     = Black
+       rgb(255, 255, 255) = White
+       rgb(128, 128, 128) = Grey
+
+       Hex vs RGB — same color, different format:
+       #FF0000 = rgb(255, 0, 0)   → both are pure red
+       #0f3460 = rgb(15, 52, 96)  → same deep navy blue
+
+       ✅ Good for: when you need to do math on colors in JS,
+          when a design tool gives you RGB values
+    */
+
+    /* --- 6D. RGBA COLORS --- */
+    /*
+       RGBA = RGB + Alpha (transparency)
+       Format: rgba(red, green, blue, alpha)
+       Alpha ranges from 0 (fully transparent) to 1 (fully opaque)
+
+       rgba(255, 0, 0, 1.0)   → solid red (no transparency)
+       rgba(255, 0, 0, 0.5)   → 50% transparent red
+       rgba(255, 0, 0, 0.1)   → barely visible red tint
+       rgba(0, 0, 0, 0.5)     → semi-transparent black overlay
+       rgba(255, 255, 255, 0.8) → slightly transparent white
+
+       REAL USES:
+       → Overlay effects on images: rgba(0,0,0,0.5) dark overlay
+       → Card shadows: rgba(0,0,0,0.1) subtle shadow
+       → Glassmorphism: rgba(255,255,255,0.2) frosted glass effect
+
+       NOTE: Hex also supports transparency with 8 digits:
+       #FF000080 = 50% transparent red (last 2 digits = alpha)
+       But rgba() is clearer and more commonly used.
+    */
+
+    /* --- 6E. HSL COLORS --- */
+    /*
+       HSL = Hue, Saturation, Lightness
+       Format: hsl(hue, saturation%, lightness%)
+
+       HUE       → The color itself, on a 360° color wheel
+                   0°/360° = Red
+                   60°  = Yellow
+                   120° = Green
+                   180° = Cyan
+                   240° = Blue
+                   300° = Magenta
+
+       SATURATION → How vibrant/grey the color is
+                   0%   = Completely grey (no color)
+                   50%  = Half-saturated
+                   100% = Fully vivid color
+
+       LIGHTNESS  → How light or dark
+                   0%   = Black
+                   50%  = Normal color
+                   100% = White
+
+       EXAMPLES:
+       hsl(0, 100%, 50%)    → Pure red
+       hsl(0, 100%, 25%)    → Dark red (maroon)
+       hsl(0, 100%, 75%)    → Light pink
+       hsl(0, 0%, 50%)      → Medium grey (no saturation = grey)
+       hsl(120, 100%, 40%)  → Green
+       hsl(240, 100%, 50%)  → Blue
+
+       HSLA adds transparency:
+       hsla(0, 100%, 50%, 0.5) → 50% transparent red
+
+       WHY HSL IS GREAT FOR DEVELOPERS:
+       → Easy to create color variations:
+         hsl(220, 70%, 20%)  → dark navy
+         hsl(220, 70%, 50%)  → medium blue (same hue, more light)
+         hsl(220, 70%, 80%)  → light sky blue (same hue, more light)
+       → All 3 use the same hue (220), just change lightness
+       → Perfect for creating hover states, light/dark theme variants
+    */
+
+
+    /* Live color demo styles */
+    .color-demo-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 14px 0;
+    }
+    .color-swatch {
+      height: 70px;
+      border-radius: 8px;
+      display: flex;
+      align-items: flex-end;
+      padding: 6px 8px;
+    }
+    .color-swatch span {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: white;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+    }
+    .swatch-named   { background-color: tomato; }
+    .swatch-hex     { background-color: #0f3460; }
+    .swatch-rgb     { background-color: rgb(39, 174, 96); }
+    .swatch-rgba    { background-color: rgba(231, 76, 60, 0.6); border: 1px dashed #e74c3c; }
+    .swatch-hsl     { background-color: hsl(260, 70%, 50%); }
+    .swatch-hsla    { background-color: hsla(260, 70%, 50%, 0.5); border: 1px dashed #7d3c98; }
+    .swatch-dark    { background-color: hsl(220, 70%, 20%); }
+    .swatch-light   { background-color: hsl(220, 70%, 75%); }
+
+
+    /* ============================================================
+       TOPIC 7: BACKGROUNDS
+       ============================================================
+    */
+
+    /* --- 7A. background-color --- */
+    /*
+       Sets a solid background color.
+       Accepts any color format: named, hex, rgb, rgba, hsl
+
+       Examples:
+       background-color: red;
+       background-color: #0f3460;
+       background-color: rgb(240, 244, 248);
+       background-color: rgba(0, 0, 0, 0.1);
+       background-color: transparent;  → no background (see-through)
+    */
+
+    .bg-demo-color {
+      background-color: #0f3460;
+      color: white;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 10px 0;
+      text-align: center;
+    }
+
+    /* --- 7B. background-image --- */
+    /*
+       Sets an image as the background.
+       Format: background-image: url("path/to/image.jpg");
+
+       You can also use CSS gradients as background images:
+
+       LINEAR GRADIENT:
+       background-image: linear-gradient(direction, color1, color2);
+       → direction options: to right, to left, to bottom (default),
+                            to top, to bottom right, 45deg, 135deg
+
+       EXAMPLES:
+       background-image: linear-gradient(to right, #0f3460, #e94560);
+       background-image: linear-gradient(45deg, red, blue);
+       background-image: linear-gradient(to bottom, #fff, #000);
+       → Multi-color: linear-gradient(to right, red, yellow, green)
+
+       RADIAL GRADIENT (circular):
+       background-image: radial-gradient(circle, #e94560, #0f3460);
+    */
+
+    .bg-demo-gradient-lr {
+      background-image: linear-gradient(to right, #0f3460, #e94560);
+      color: white;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 10px 0;
+      text-align: center;
+    }
+    .bg-demo-gradient-diag {
+      background-image: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 10px 0;
+      text-align: center;
+    }
+    .bg-demo-radial {
+      background-image: radial-gradient(circle, #f39c12, #e74c3c);
+      color: white;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 10px 0;
+      text-align: center;
+    }
+
+    /* --- 7C. background-size --- */
+    /*
+       Controls the SIZE of the background image.
+
+       background-size: auto;         → original image size (default)
+       background-size: cover;        → SCALES image to cover the entire
+                                        element (may crop edges)
+                                        Used on: hero sections, full-page bg
+       background-size: contain;      → SCALES image to fit INSIDE the element
+                                        (may leave empty space)
+       background-size: 200px 100px;  → exact width and height
+       background-size: 50%;          → percentage of element width
+
+       MOST USED IN REAL PROJECTS:
+       background-size: cover;   → hero images, full-page backgrounds
+       background-size: contain; → logos, icons used as backgrounds
+    */
+
+    /* --- 7D. background-repeat --- */
+    /*
+       Controls whether a background image repeats (tiles).
+
+       background-repeat: repeat;     → tiles in both directions (default)
+       background-repeat: no-repeat;  → shows image only once
+       background-repeat: repeat-x;   → tiles only horizontally
+       background-repeat: repeat-y;   → tiles only vertically
+
+       Almost always use no-repeat when background-size is cover/contain.
+    */
+
+    /* --- 7E. background-position --- */
+    /*
+       Controls WHERE the background image is positioned.
+
+       background-position: center;         → centered (used 90% of the time)
+       background-position: top;
+       background-position: bottom;
+       background-position: left;
+       background-position: right;
+       background-position: top right;      → combination
+       background-position: 50% 50%;        → same as center
+       background-position: 20px 40px;      → exact offset from top-left
+
+       Most common combo for hero images:
+       background-image: url("hero.jpg");
+       background-size: cover;
+       background-position: center;
+       background-repeat: no-repeat;
+    */
+
+    /* --- 7F. background SHORTHAND --- */
+    /*
+       Instead of writing 4 separate properties, combine them:
+
+       background: [color] [image] [repeat] [position] / [size];
+
+       EXAMPLE:
+       background: url("hero.jpg") no-repeat center / cover;
+
+       → url("hero.jpg") = image
+       → no-repeat        = don't tile
+       → center           = position
+       → / cover          = size (the slash separates position from size)
+
+       With color fallback:
+       background: #0f3460 url("hero.jpg") no-repeat center / cover;
+       → The color shows if the image fails to load
+
+       INTERVIEW TIP:
+       "What is the difference between background-size cover and contain?"
+       cover   → fills the entire element, may crop the image
+       contain → fits the entire image inside, may show empty space
+    */
+
+    .bg-demo-shorthand {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      color: white;
+      padding: 30px;
+      border-radius: 8px;
+      margin: 10px 0;
+      text-align: center;
+      font-size: 1.1rem;
+    }
+
+
+    /* ============================================================
+       TOPIC 8: TYPOGRAPHY
+       ============================================================
+
+       Typography = everything related to text appearance.
+       It's one of the most impactful parts of design —
+       good typography makes a site look professional.
+    */
+
+    /* --- 8A. font-family --- */
+    /*
+       Sets the typeface (font) of the text.
+       Format: font-family: "First Choice", "Second Choice", generic;
+
+       Always provide a FONT STACK — multiple fonts as fallbacks.
+       If the first font isn't available on the user's computer,
+       the browser tries the next, and so on.
+
+       GENERIC FAMILIES (always available, use as the last fallback):
+       → serif       → Times New Roman style (has serifs — little feet)
+       → sans-serif  → Arial, Helvetica style (clean, no serifs)
+       → monospace   → Courier style (all characters same width, for code)
+       → cursive     → handwriting style
+       → fantasy     → decorative style
+
+       COMMON FONT STACKS:
+       font-family: Arial, Helvetica, sans-serif;
+       font-family: 'Times New Roman', Times, serif;
+       font-family: 'Courier New', Courier, monospace;
+       font-family: Georgia, 'Times New Roman', serif;
+       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+       GOOGLE FONTS (free, professional fonts):
+       1. Go to fonts.google.com
+       2. Pick a font (e.g. "Roboto", "Poppins", "Inter")
+       3. Copy the <link> tag into your HTML <head>
+       4. Use it: font-family: 'Poppins', sans-serif;
+
+       In HTML head:
+       <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+
+       Use: font-family: 'Poppins', sans-serif;
+
+       Quote font names that have spaces:
+       ✅ font-family: 'Segoe UI', sans-serif;
+       ❌ font-family: Segoe UI, sans-serif;  → WRONG
+    */
+
+    .demo-serif     { font-family: Georgia, 'Times New Roman', serif; }
+    .demo-sansserif { font-family: Arial, Helvetica, sans-serif; }
+    .demo-mono      { font-family: 'Courier New', Courier, monospace; }
+
+
+    /* --- 8B. font-size --- */
+    /*
+       Controls the SIZE of the text.
+       We'll cover units in detail in Topic 9, but here's a preview:
+
+       font-size: 16px;    → 16 pixels (most common base size)
+       font-size: 1rem;    → relative to root font size (usually = 16px)
+       font-size: 1.5em;   → 1.5x the parent's font size
+       font-size: 120%;    → 120% of parent's font size
+       font-size: large;   → keyword (avoid, inconsistent)
+
+       BROWSER DEFAULT: 16px for body text
+       COMMON SIZES:
+       12-14px → small print, captions
+       16px    → body text (standard)
+       18-20px → comfortable reading
+       24-32px → headings
+       48-72px → hero/banner text
+    */
+
+    /* --- 8C. font-weight --- */
+    /*
+       Controls how BOLD or THIN the text is.
+
+       Named values:
+       font-weight: normal;   → same as 400
+       font-weight: bold;     → same as 700
+
+       Numeric values (100 to 900, in steps of 100):
+       font-weight: 100;   → Thin
+       font-weight: 200;   → Extra Light
+       font-weight: 300;   → Light
+       font-weight: 400;   → Normal / Regular (default body text)
+       font-weight: 500;   → Medium
+       font-weight: 600;   → Semi Bold
+       font-weight: 700;   → Bold (common for headings)
+       font-weight: 800;   → Extra Bold
+       font-weight: 900;   → Black / Heavy
+
+       IMPORTANT: Not all fonts support all 9 weights.
+       Google Fonts lets you choose which weights to load.
+       If a weight isn't available, browser picks the nearest.
+    */
+
+    /* --- 8D. font-style --- */
+    /*
+       font-style: normal;   → regular (default)
+       font-style: italic;   → slanted, uses the italic version of the font
+       font-style: oblique;  → artificially slanted (rarely used)
+    */
+
+    /* --- 8E. line-height --- */
+    /*
+       Controls the space BETWEEN lines of text.
+       Also called "leading" in design.
+
+       line-height: 1;     → lines touch each other (too tight)
+       line-height: 1.5;   → 1.5x the font size (comfortable reading)
+       line-height: 1.6;   → slightly more spacious (popular choice)
+       line-height: 2;     → double spaced (too much usually)
+       line-height: 24px;  → fixed pixel value (avoid — not scalable)
+
+       BEST PRACTICE: Use a UNITLESS number (like 1.5 or 1.6)
+       → It multiplies the current font-size automatically
+       → If font-size changes, line-height adjusts proportionally
+       → 1.5 to 1.7 is the sweet spot for body text readability
+    */
+
+    /* --- 8F. text-align --- */
+    /*
+       Controls horizontal alignment of text.
+
+       text-align: left;     → default for most text (LTR languages)
+       text-align: right;    → used for numbers in tables, RTL languages
+       text-align: center;   → for headings, hero text, buttons
+       text-align: justify;  → spreads text to fill full width (like books)
+                               Use cautiously — can create awkward gaps
+    */
+
+    /* --- 8G. text-decoration --- */
+    /*
+       Adds or removes decorative lines on text.
+
+       text-decoration: none;         → removes underline (used on links)
+       text-decoration: underline;    → adds underline
+       text-decoration: line-through; → adds strikethrough
+       text-decoration: overline;     → line above text (rarely used)
+
+       Can combine property, style, and color:
+       text-decoration: underline wavy red;
+       text-decoration: underline dashed blue;
+
+       MOST COMMON USE:
+       a { text-decoration: none; }  → removes underline from all links
+                                       then you add your own styling
+    */
+
+    /* --- 8H. text-transform --- */
+    /*
+       Controls the CASE of text (uppercase/lowercase).
+       It only changes how it LOOKS — the HTML text is unchanged.
+
+       text-transform: none;        → default, no change
+       text-transform: uppercase;   → ALL CAPS
+       text-transform: lowercase;   → all lowercase
+       text-transform: capitalize;  → First Letter Of Each Word Capitalized
+
+       REAL USE:
+       → Navigation links: text-transform: uppercase; letter-spacing: 1px;
+       → Labels: text-transform: uppercase; font-size: 0.75rem;
+         (looks very professional in design)
+    */
+
+    /* --- 8I. letter-spacing --- */
+    /*
+       Controls the space BETWEEN individual characters.
+       Also called "tracking" in design.
+
+       letter-spacing: normal;  → default
+       letter-spacing: 1px;     → slightly more spaced
+       letter-spacing: 3px;     → noticeably spaced
+       letter-spacing: -1px;    → tighter (used on large headings)
+
+       REAL USE:
+       .label {
+         text-transform: uppercase;
+         letter-spacing: 2px;
+         font-size: 0.75rem;
+       }
+       → This combo makes beautiful uppercase labels/captions.
+    */
+
+    /* --- 8J. word-spacing --- */
+    /*
+       Controls the space between WORDS.
+       Less commonly used than letter-spacing.
+
+       word-spacing: normal;   → default
+       word-spacing: 5px;      → more space between words
+       word-spacing: -2px;     → tighter word spacing
+    */
+
+    /* --- 8K. text-shadow --- */
+    /*
+       Adds a shadow behind text.
+       Format: text-shadow: x-offset y-offset blur-radius color;
+
+       x-offset  → horizontal shadow (positive = right, negative = left)
+       y-offset  → vertical shadow   (positive = down, negative = up)
+       blur-radius → how soft/blurry (0 = hard sharp shadow)
+       color     → shadow color
+
+       EXAMPLES:
+       text-shadow: 2px 2px 4px rgba(0,0,0,0.3);  → subtle drop shadow
+       text-shadow: 0 0 10px #e94560;              → glow effect
+       text-shadow: 2px 2px 0 #000;               → hard comic shadow
+       text-shadow: -1px -1px 0 #000, 1px 1px 0 #fff; → embossed effect
+
+       Can stack multiple shadows with commas:
+       text-shadow: 1px 1px red, 2px 2px blue;
+    */
+
+    /* --- 8L. font SHORTHAND --- */
+    /*
+       Combine multiple font properties in one line:
+       font: [style] [weight] [size]/[line-height] [family];
+
+       EXAMPLE:
+       font: italic 700 1.2rem/1.5 'Segoe UI', sans-serif;
+
+       Breaks down as:
+       font-style:   italic
+       font-weight:  700
+       font-size:    1.2rem
+       line-height:  1.5
+       font-family:  'Segoe UI', sans-serif
+
+       NOTE: size and family are REQUIRED in shorthand.
+       The others are optional but must be in the right order.
+    */
+
+    /* Live typography demo styles */
+    .typo-demo-box {
+      padding: 16px 20px;
+      background: #f8fbff;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      margin: 10px 0;
+    }
+    .demo-size-small  { font-size: 12px; }
+    .demo-size-base   { font-size: 16px; }
+    .demo-size-large  { font-size: 24px; }
+    .demo-size-xlarge { font-size: 36px; }
+    .demo-weight-300  { font-weight: 300; }
+    .demo-weight-400  { font-weight: 400; }
+    .demo-weight-600  { font-weight: 600; }
+    .demo-weight-900  { font-weight: 900; }
+    .demo-align-left    { text-align: left; }
+    .demo-align-center  { text-align: center; }
+    .demo-align-right   { text-align: right; }
+    .demo-transform-upper { text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; color: #888; }
+    .demo-transform-cap   { text-transform: capitalize; }
+    .demo-shadow { font-size: 2rem; font-weight: 700; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); color: #0f3460; }
+    .demo-glow   { font-size: 1.5rem; font-weight: 700; text-shadow: 0 0 12px #e94560; color: #e94560; }
+    .demo-lh-tight  { line-height: 1.1; color: #555; }
+    .demo-lh-normal { line-height: 1.6; color: #555; }
+    .demo-lh-loose  { line-height: 2.2; color: #555; }
+    .demo-ls        { letter-spacing: 4px; text-transform: uppercase; font-size: 0.8rem; color: #888; font-weight: 600; }
+
+
+    /* ============================================================
+       TOPIC 9: CSS UNITS — px, %, em, rem
+       ============================================================
+
+       Units define the SIZE of things in CSS.
+       Choosing the right unit is critical for responsive design.
+    */
+
+    /* --- 9A. px (Pixels) --- */
+    /*
+       1px = 1 physical dot on screen (roughly).
+
+       font-size: 16px;
+       width: 300px;
+       margin: 20px;
+
+       ✅ ABSOLUTE unit — always the exact size you set
+       ❌ Does NOT scale when user changes browser font size
+       ❌ Does NOT scale proportionally with parent elements
+
+       Use for:
+       → Borders: border: 1px solid black;
+       → Small fixed sizes: icons (24px), border-radius
+       → When you need EXACT pixel-perfect sizing
+
+       Do NOT use for:
+       → Font sizes (use rem instead)
+       → Responsive layouts (use % or fr instead)
+    */
+
+    /* --- 9B. % (Percentage) --- */
+    /*
+       Percentage is RELATIVE to the PARENT element.
+
+       width: 50%;     → 50% of the parent's width
+       font-size: 120% → 120% of the parent's font-size
+
+       If the parent is 1000px wide:
+       child { width: 50%; }  → child is 500px wide
+
+       If the parent is 500px wide:
+       child { width: 50%; }  → child is 250px wide
+
+       ✅ Great for responsive layouts — adapts to screen size
+       ✅ Great for making elements relative to their container
+
+       Most used for:
+       → width: 100%;    → full width of parent
+       → width: 50%;     → half width
+       → width: 33.33%;  → one-third width (3-column layout)
+    */
+
+    /* --- 9C. em --- */
+    /*
+       em is RELATIVE to the CURRENT ELEMENT'S font-size.
+       (or the PARENT's font-size for the font-size property itself)
+
+       If an element has font-size: 16px:
+       padding: 1em;   → padding = 16px  (1 × 16)
+       padding: 2em;   → padding = 32px  (2 × 16)
+       padding: 0.5em; → padding = 8px   (0.5 × 16)
+
+       THE COMPOUNDING PROBLEM:
+       -------------------------
+       body          { font-size: 16px; }    → 16px
+       .parent       { font-size: 1.5em; }   → 1.5 × 16 = 24px
+       .parent .child { font-size: 1.5em; }  → 1.5 × 24 = 36px  ← !!
+
+       Each nested em multiplies the parent's size.
+       Deeply nested elements can have huge unexpected font sizes.
+       This is called "em compounding" — a common beginner mistake.
+
+       ✅ Good for:
+       → Component-level sizing (padding relative to its own font-size)
+       → When you WANT sizes to scale with the component's font
+       → Media query breakpoints
+
+       ❌ Avoid for:
+       → Font-sizes in nested elements (use rem instead)
+    */
+
+    /* --- 9D. rem (Root em) — THE RECOMMENDED UNIT --- */
+    /*
+       rem is RELATIVE to the ROOT element's font-size (<html>).
+       The root font size is ALWAYS the same — it doesn't compound.
+
+       If html { font-size: 16px; }  (browser default):
+       1rem  = 16px   (always, no matter how deeply nested)
+       1.5rem = 24px
+       2rem   = 32px
+       0.75rem = 12px
+       0.5rem = 8px
+
+       If the user changes their browser font size to 20px:
+       1rem  = 20px   → your layout adapts to their preference ✅
+
+       This is why rem is PREFERRED for font sizes and spacing
+       in professional projects.
+
+       THE REM TRICK (used in many projects):
+       html { font-size: 62.5%; }
+       → 62.5% of 16px = 10px
+       Now 1rem = 10px, making math easy:
+       1rem  = 10px
+       1.5rem = 15px
+       2rem   = 20px
+       2.4rem = 24px
+
+       COMPARISON SUMMARY:
+       ─────────────────────────────────────────────────────
+       Unit    Relative to          Compounds?   Responsive?
+       ─────────────────────────────────────────────────────
+       px      Nothing (absolute)   No           No
+       %       Parent element       Yes           Yes
+       em      Current font-size    YES ⚠️        Yes
+       rem     Root <html> size     No ✅          Yes
+       ─────────────────────────────────────────────────────
+
+       WHEN TO USE WHAT:
+       px  → borders, small fixed sizes
+       %   → widths, layout percentages
+       em  → padding/margin relative to the component's font size
+       rem → font-size, spacing (most things)
+
+       INTERVIEW TIP — VERY COMMONLY ASKED:
+       "What is the difference between em and rem?"
+       em  → relative to the CURRENT/PARENT element's font-size. Compounds when nested.
+       rem → relative to the ROOT (<html>) font-size. Does NOT compound. More predictable.
+    */
+
+    .demo-units-container {
+      font-size: 16px;
+      background: #f0f4f8;
+      padding: 16px;
+      border-radius: 6px;
+      margin: 10px 0;
+    }
+    .demo-px  { font-size: 20px;   background: #fde8e8; padding: 8px; margin: 6px 0; border-radius: 4px; }
+    .demo-rem { font-size: 1.25rem; background: #e8f4fd; padding: 8px; margin: 6px 0; border-radius: 4px; }
+    .demo-em  { font-size: 1.25em;  background: #e8fde8; padding: 8px; margin: 6px 0; border-radius: 4px; }
+    .demo-pct { width: 60%;         background: #fdf5e8; padding: 8px; margin: 6px 0; border-radius: 4px; font-size: 0.9rem; }
+
+    /* --- 9E. Other Units (Know These Exist) --- */
+    /*
+       vw  → Viewport Width  — 1vw = 1% of the browser window width
+       vh  → Viewport Height — 1vh = 1% of the browser window height
+
+       width: 100vw;   → full browser window width
+       height: 100vh;  → full browser window height
+
+       Real use:
+       → Full-screen hero sections: height: 100vh;
+       → Full-width dividers: width: 100vw;
+
+       vmin → 1% of whichever is smaller (width or height)
+       vmax → 1% of whichever is larger
+
+       These are used in responsive design (covered in CSS File 4).
+    */
+
+
+    /* ============================================================
+       TOPIC 10: CSS VARIABLES (Custom Properties)
+       ============================================================
+
+       CSS Variables let you store a value once and reuse it
+       everywhere. Change it once → updates everywhere.
+    */
+
+    /*
+       DECLARING VARIABLES:
+       ---------------------
+       Variables are declared with -- prefix.
+       Always declare them on :root to make them GLOBAL
+       (available to every element on the page).
+
+       :root {
+         --primary-color: #0f3460;
+         --accent-color: #e94560;
+         --text-color: #333333;
+         --bg-color: #f0f4f8;
+         --font-size-base: 1rem;
+         --border-radius: 8px;
+         --spacing-sm: 8px;
+         --spacing-md: 16px;
+         --spacing-lg: 32px;
+       }
+
+       USING VARIABLES:
+       ----------------
+       Use the var() function to use a variable.
+
+       h1 { color: var(--primary-color); }
+       button { background-color: var(--accent-color); }
+       .card { border-radius: var(--border-radius); }
+
+       VAR() FALLBACK:
+       ---------------
+       If a variable isn't defined, you can provide a fallback:
+       color: var(--primary-color, blue);
+       → Uses --primary-color if it exists, otherwise uses blue.
+
+       WHY CSS VARIABLES ARE POWERFUL:
+       --------------------------------
+       1. CHANGE ONCE, UPDATE EVERYWHERE:
+          If your brand color changes from #0f3460 to #1a237e,
+          change ONE line in :root → entire website updates.
+
+       2. DARK MODE THEMES:
+          :root { --bg: white; --text: black; }
+          .dark-mode { --bg: black; --text: white; }
+          → Same CSS, just swap variable values for dark mode.
+
+       3. READABLE CODE:
+          color: var(--accent-color);    ← meaningful name ✅
+          color: #e94560;               ← what color is this? ❌
+
+       4. ACCESSIBLE IN JAVASCRIPT:
+          // Read a CSS variable in JS:
+          getComputedStyle(document.root).getPropertyValue('--primary-color');
+          // Change a CSS variable in JS:
+          document.documentElement.style.setProperty('--primary-color', 'red');
+
+       DIFFERENCE FROM SASS/LESS VARIABLES:
+       → Sass: $primary: #0f3460;  → processed at compile time, gone in browser
+       → CSS:  --primary: #0f3460; → lives in the browser, can be changed by JS
+
+       INTERVIEW TIP:
+       "What are CSS custom properties (variables)?"
+       CSS variables (custom properties) are declared with a --name syntax
+       on a selector (usually :root for global scope) and used with var(--name).
+       Unlike preprocessor variables, they are dynamic — they can be changed
+       at runtime by JavaScript and update the UI instantly.
+    */
+
+    :root {
+      --primary:      #0f3460;
+      --accent:       #e94560;
+      --success:      #27ae60;
+      --warning:      #f39c12;
+      --text-dark:    #1a1a2e;
+      --text-muted:   #777;
+      --bg-light:     #f0f4f8;
+      --radius:       8px;
+      --radius-sm:    4px;
+      --space-sm:     8px;
+      --space-md:     16px;
+      --space-lg:     32px;
+      --shadow:       0 2px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Now use those variables everywhere: */
+    .var-demo-card {
+      background-color: white;
+      border-radius: var(--radius);
+      padding: var(--space-md);
+      margin: 10px 0;
+      box-shadow: var(--shadow);
+      border-left: 4px solid var(--accent);
+    }
+    .var-demo-card h4 {
+      color: var(--primary);
+      margin-bottom: var(--space-sm);
+    }
+    .var-demo-card p {
+      color: var(--text-muted);
+    }
+
+    .var-demo-btn {
+      display: inline-block;
+      background-color: var(--accent);
+      color: white;
+      padding: var(--space-sm) var(--space-md);
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      margin: 4px;
+      font-size: 0.9rem;
+    }
+    .var-demo-btn-primary { background-color: var(--primary); }
+    .var-demo-btn-success { background-color: var(--success); }
+    .var-demo-btn-warning { background-color: var(--warning); }
+
+
+    /* ============================================================
+       BONUS: SELECTOR COMBINATIONS (Advanced — Good to Know)
+       ============================================================
+    */
+
+    /*
+       ADJACENT SIBLING SELECTOR (+):
+       Targets an element immediately AFTER another element.
+
+       h2 + p { color: red; }
+       → Only the FIRST <p> directly after an <h2> gets styled.
+
+       GENERAL SIBLING SELECTOR (~):
+       Targets ALL following siblings.
+
+       h2 ~ p { color: red; }
+       → ALL <p> elements after an <h2> (at the same level) get styled.
+
+       ATTRIBUTE SELECTOR:
+       Targets elements based on their HTML attributes.
+
+       [type="text"]   → input with type="text"
+       [href]          → any element with an href attribute
+       [class*="btn"]  → elements whose class CONTAINS "btn"
+       [href^="https"] → links that START WITH https
+       [href$=".pdf"]  → links that END WITH .pdf
+
+       EXAMPLES:
+       input[type="text"] { border: 2px solid blue; }
+       a[href^="https"] { color: green; }
+       a[href$=".pdf"]::after { content: " (PDF)"; }
+    */
+
+
+  </style>
+</head>
+
+<body>
+<div class="page-wrapper">
+
+  <!-- ============================================================
+       PAGE HEADER
+       ============================================================ -->
+  <h1 id="main-title">CSS File 1 — Foundations</h1>
+  <p style="text-align:center; color:#888; font-size:0.9rem; margin-bottom:30px;">
+    Complete CSS basics with live examples — study this once, revise it fast.
+  </p>
+
+
+  <!-- ============================================================
+       TOPIC 1 + 2: CSS SYNTAX & 3 WAYS TO WRITE CSS
+       ============================================================ -->
+  <h2>1 + 2. CSS Syntax &amp; 3 Ways to Write CSS</h2>
+
+  <div class="highlight-box">
+    The basic structure of a CSS rule:
+    <strong>selector { property: value; }</strong>
+    <br>Read as: "Target this element and apply these styles to it."
+  </div>
+
+  <div class="code-box">/* METHOD 1: Inline CSS — written directly on the element */
+&lt;h1 style="color: red; font-size: 40px;"&gt;Hello&lt;/h1&gt;
+
+/* METHOD 2: Internal CSS — inside a &lt;style&gt; tag in &lt;head&gt; */
+&lt;head&gt;
+  &lt;style&gt;
+    h1 { color: red; font-size: 40px; }
+  &lt;/style&gt;
+&lt;/head&gt;
+
+/* METHOD 3: External CSS — link a .css file (INDUSTRY STANDARD) */
+&lt;head&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+/* In style.css file: */
+h1 { color: red; font-size: 40px; }</div>
+
+  <div class="result-box">
+    <div class="result-label">Live Example — Inline CSS on these three spans:</div>
+    <span style="color: red; font-weight: bold;">Inline red bold</span> &nbsp;|&nbsp;
+    <span style="color: blue; font-size: 1.3rem;">Inline blue larger</span> &nbsp;|&nbsp;
+    <span style="background-color: #f39c12; padding: 2px 8px; border-radius: 3px; color: white;">Inline orange badge</span>
+  </div>
+
+
+  <hr class="topic-divider">
+
+  <!-- ============================================================
+       TOPIC 3: SELECTORS
+       ============================================================ -->
+  <h2>3. Selectors — Targeting HTML Elements</h2>
+
+  <h3><span class="tag">Type</span> Element Selector</h3>
+  <div class="code-box">/* Targets ALL &lt;p&gt; elements on the page */
+p {
+  color: #333;
+  margin-bottom: 14px;
+}</div>
+  <div class="result-box">
+    <div class="result-label">Result — all paragraphs on this page use the p selector:</div>
+    <p>This is a paragraph — it got its style from the element selector <strong>p { }</strong></p>
+  </div>
+
+  <h3><span class="tag tag-blue">Class</span> Class Selector ( .classname )</h3>
+  <div class="code-box">/* In CSS — the dot means "class" */
+.highlight-box {
+  background-color: #fff8e1;
+  border-left: 4px solid #f39c12;
+  padding: 14px 18px;
+}
+
+/* Multiple classes on one element */
+&lt;p class="bold-text red-text large"&gt;...&lt;/p&gt;</div>
+  <div class="result-box">
+    <div class="result-label">Result — .highlight-box class applied:</div>
+    <div class="highlight-box">This div has class="highlight-box" — it gets the yellow left-bordered style.</div>
+  </div>
+
+  <h3><span class="tag tag-orange">ID</span> ID Selector ( #idname )</h3>
+  <div class="code-box">/* In CSS — the hash # means "id" */
+#main-title {
+  text-align: center;
+  padding: 20px 0;
+}
+
+/* In HTML */
+&lt;h1 id="main-title"&gt;CSS File 1 — Foundations&lt;/h1&gt;</div>
+  <div class="highlight-box">
+    The centered heading at the top of this page uses <strong>#main-title</strong>. Each id can only appear once per page.
+  </div>
+
+  <h3><span class="tag">Group</span> Grouping Selector</h3>
+  <div class="code-box">/* Apply the same style to multiple selectors at once */
+h1, h2, h3 {
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Without grouping — repetitive (BAD): */
+h1 { font-family: 'Segoe UI', sans-serif; }
+h2 { font-family: 'Segoe UI', sans-serif; }
+h3 { font-family: 'Segoe UI', sans-serif; }</div>
+
+  <h3><span class="tag tag-green">Descend</span> Descendant Selector</h3>
+  <div class="code-box">/* Only targets &lt;p&gt; that is INSIDE a .demo-card */
+.demo-card p {
+  color: #555;
+  font-style: italic;
+}
+/* Other &lt;p&gt; tags outside .demo-card are NOT affected */</div>
+  <div class="result-box">
+    <div class="result-label">Result — italic grey only on paragraphs inside .demo-card:</div>
+    <div class="demo-card">
+      <strong>I'm a .demo-card div</strong>
+      <p>This paragraph IS inside .demo-card — italic grey ✅</p>
+    </div>
+    <p>This paragraph is OUTSIDE .demo-card — normal style ✅</p>
+  </div>
+
+  <h3><span class="tag">Child</span> Child Selector ( &gt; )</h3>
+  <div class="code-box">/* Only targets DIRECT &lt;p&gt; children — not grandchildren */
+.demo-parent > p {
+  color: #e94560;
+  font-weight: bold;
+}
+/* The &lt;p&gt; inside a nested div is NOT a direct child → not affected */</div>
+  <div class="result-box">
+    <div class="result-label">Result — red bold only on direct child p:</div>
+    <div class="demo-parent">
+      <p>I am a DIRECT child of .demo-parent → red + bold ✅</p>
+      <div>
+        <p>I am a GRANDCHILD (inside a nested div) → NOT styled ✅</p>
+      </div>
+    </div>
+  </div>
+
+
+  <hr class="topic-divider">
+
+  <!-- ============================================================
+       TOPIC 4 + 5: CASCADE & SPECIFICITY
+       ============================================================ -->
+  <h2>4 + 5. Cascade &amp; Specificity</h2>
+
+  <div class="highlight-box">
+    <strong>The Cascade:</strong> When two rules conflict, the one with higher specificity wins. If specificity is equal, the <em>last rule written</em> wins.
+  </div>
+
+  <div class="code-box">/* SPECIFICITY SCORE CHART:
+   Selector         Example          Score (id, class, element)
+   ────────────────────────────────────────────────────────────
+   Inline style     style="..."      1,0,0,0   ← HIGHEST
+   ID               #title           0,1,0,0
+   Class            .box             0,0,1,0
+   Pseudo-class     :hover           0,0,1,0
+   Element          h1               0,0,0,1
+   Universal        *                0,0,0,0   ← LOWEST
+*/
+
+/* Example — which color wins? */
+h1          { color: blue; }     /* score: 0,0,0,1 */
+.heading    { color: red; }      /* score: 0,0,1,0 → WINS */
+#main-title { color: green; }    /* score: 0,1,0,0 → WINS over both */
+
+/* Inline style would beat even the #id selector */
+&lt;h1 style="color: orange;"&gt;  ← this wins over everything</div>
+
+  <div class="result-box">
+    <div class="result-label">Live specificity demo — same element, 3 selectors competing:</div>
+    <!-- The #main-title id selector wins → heading is #0f3460 navy color -->
+    <p>The <strong>#main-title</strong> heading at the top is navy because the id selector (score 0,1,0,0) beats any element or class selector.</p>
+
+    <!-- Showing !important effect -->
+    <p style="color: green !important; font-weight: 600;">
+      This paragraph has inline style red, BUT also <code>color: green !important</code> — !important wins over everything, even inline.
+    </p>
+  </div>
+
+
+  <hr class="topic-divider">
+
+  <!-- ============================================================
+       TOPIC 6: COLORS
+       ============================================================ -->
+  <h2>6. Colors</h2>
+
+  <div class="code-box">color: tomato;                    /* Named color */
+color: #0f3460;                   /* Hex */
+color: rgb(39, 174, 96);         /* RGB */
+color: rgba(231, 76, 60, 0.6);   /* RGBA — with 60% opacity */
+color: hsl(260, 70%, 50%);       /* HSL */
+color: hsla(260, 70%, 50%, 0.5); /* HSLA — with 50% opacity */</div>
+
+  <p class="result-label" style="margin-top:14px;">Live Color Swatches:</p>
+  <div class="color-demo-grid">
+    <div class="color-swatch swatch-named"><span>Named: tomato</span></div>
+    <div class="color-swatch swatch-hex"><span>Hex: #0f3460</span></div>
+    <div class="color-swatch swatch-rgb"><span>RGB: (39,174,96)</span></div>
+    <div class="color-swatch swatch-rgba"><span>RGBA: 60% opacity</span></div>
+    <div class="color-swatch swatch-hsl"><span>HSL: (260,70%,50%)</span></div>
+    <div class="color-swatch swatch-hsla"><span>HSLA: 50% opacity</span></div>
+    <div class="color-swatch swatch-dark"><span>HSL dark: L=20%</span></div>
+    <div class="color-swatch swatch-light"><span>HSL light: L=75%</span></div>
+  </div>
+
+  <div class="highlight-box">
+    <strong>HSL tip:</strong> The last two swatches use the same Hue (220) and Saturation (70%) — only Lightness changes. This is how designers create color variants (dark/light versions of the same color) easily.
+  </div>
+
+
+  <hr class="topic-divider">
+
+  <!-- ============================================================
+       TOPIC 7: BACKGROUNDS
+       ============================================================ -->
+  <h2>7. Backgrounds</h2>
+
+  <div class="code-box">/* Solid background color */
+background-color: #0f3460;
+
+/* Linear gradient — left to right */
+background-image: linear-gradient(to right, #0f3460, #e94560);
+
+/* Linear gradient — diagonal (135 degrees) */
+background-image: linear-gradient(135deg, #667eea, #764ba2);
+
+/* Radial gradient — circular from center */
+background-image: radial-gradient(circle, #f39c12, #e74c3c);
+
+/* Background image with cover sizing */
+background-image: url("hero.jpg");
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+
+/* Shorthand version of the above */
+background: url("hero.jpg") no-repeat center / cover;</div>
+
+  <div class="result-label" style="margin-top:14px;">Live Background Demos:</div>
+  <div class="bg-demo-color">background-color: #0f3460 (solid color)</div>
+  <div class="bg-demo-gradient-lr">linear-gradient(to right, #0f3460, #e94560) — Left to Right</div>
+  <div class="bg-demo-gradient-diag">linear-gradient(135deg, #667eea, #764ba2) — Diagonal</div>
+  <div class="bg-demo-radial">radial-gradient(circle, #f39c12, #e74c3c) — Radial/Circular</div>
+  <div class="bg-demo-shorthand">Multi-stop gradient: linear-gradient(135deg, #1a1a2e → #16213e → #0f3460)</div>
+
+
+  <hr class="topic-divider">
+
+  <!-- ============================================================
+       TOPIC 8: TYPOGRAPHY
+       ============================================================ -->
+  <h2>8. Typography</h2>
+
+  <h3>Font Families</h3>
+  <div class="code-box">/* Always provide fallback fonts */
+font-family: 'Segoe UI', Arial, sans-serif;     /* sans-serif (modern, clean) */
+font-family: Georgia, 'Times New Roman', serif; /* serif (classic, editorial) */
+font-family: 'Courier New', Courier, monospace; /* monospace (code) */
+
+/* Google Fonts — add to &lt;head&gt; first */
+&lt;link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"&gt;
+font-family: 'Poppins', sans-serif;</div>
+
+  <div class="result-box">
+    <div class="result-label">Live font family examples:</div>
+    <p class="demo-serif">Georgia serif → Editorial, classic, newspapers, magazines</p>
+    <p class="demo-sansserif">Arial sans-serif → Clean, modern, apps, websites</p>
+    <p class="demo-mono">Courier monospace → Code editors, terminal output, technical</p>
+  </div>
+
+  <h3>Font Size</h3>
+  <div class="code-box">font-size: 12px;    /* Small captions */
+font-size: 16px;    /* Body text default */
+font-size: 24px;    /* Subheadings */
+font-size: 36px;    /* Section headings */</div>
+  <div class="result-box">
+    <div class="result-label">Live font-size demo:</div>
+    <p class="demo-size-small">12px — small caption text</p>
+    <p class="demo-size-base">16px — body text (browser default)</p>
+    <p class="demo-size-large">24px — subheading size</p>
+    <p class="demo-size-xlarge">36px — heading size</p>
+  </div>
+
+  <h3>Font Weight</h3>
+  <div class="code-box">font-weight: 300;  /* Light */
+font-weight: 400;  /* Normal / Regular */
+font-weight: 600;  /* Semi Bold */
+font-weight: 900;  /* Black / Heavy */</div>
+  <div class="result-box">
+    <div class="result-label">Live font-weight demo (using system font):</div>
+    <p class="demo-weight-300">font-weight: 300 → Light — thin and elegant</p>
+    <p class="demo-weight-400">font-weight: 400 → Normal — standard body text</p>
+    <p class="demo-weight-600">font-weight: 600 → Semi Bold — comfortable emphasis</p>
+    <p class="demo-weight-900">font-weight: 900 → Black — heavy, impactful headings</p>
+  </div>
+
+  <h3>Text Align, Transform, Letter Spacing</h3>
+  <div class="code-box">text-align: left | center | right | justify;
+text-transform: uppercase | lowercase | capitalize;
+letter-spacing: 2px;   /* space between characters */
+word-spacing: 5px;     /* space between words */</div>
+  <div class="result-box">
+    <div class="result-label">Live text property demos:</div>
+    <p class="demo-align-left">text-align: left (default)</p>
+    <p class="demo-align-center">text-align: center</p>
+    <p class="demo-align-right">text-align: right</p>
+    <p class="demo-transform-upper">text-transform: uppercase + letter-spacing: 2px (great for labels)</p>
+    <p class="demo-transform-cap">text-transform: capitalize — every word starts with capital</p>
+    <p class="demo-ls">letter-spacing: 4px + uppercase = professional badge style</p>
+  </div>
+
+  <h3>Line Height</h3>
+  <div class="code-box">line-height: 1.1;   /* tight — hard to read */
+line-height: 1.6;   /* comfortable — use for body text */
+line-height: 2.2;   /* loose — spacious */</div>
+  <div class="result-box">
+    <div class="result-label">Live line-height demo (same text, different spacing):</div>
+    <p class="demo-lh-tight">line-height: 1.1 — This text is very tight. Reading multiple lines is uncomfortable because the lines are too close together. Avoid for body text.</p>
+    <br>
+    <p class="demo-lh-normal">line-height: 1.6 — This text is comfortable to read. The spacing between lines gives the eye enough room to track from line to line without effort. This is the recommended value.</p>
+    <br>
+    <p class="demo-lh-loose">line-height: 2.2 — This text is very loose. Too much spacing makes it feel disconnected. Use sparingly.</p>
+  </div>
+
+  <h3>Text Shadow</h3>
+  <div class="code-box">/* text-shadow: x-offset y-offset blur color */
+text-shadow: 2px 2px 4px rgba(0,0,0,0.3);  /* subtle drop shadow */
+text-shadow: 0 0 12px #e94560;              /* glow effect */</div>
+  <div class="result-box">
+    <div class="result-label">Live text-shadow demo:</div>
+    <p class="demo-shadow">Drop Shadow Effect</p>
+    <p class="demo-glow">Glow Effect</p>
+  </div>
+
+
+  <hr class="topic-divider">
+
+  <!-- ============================================================
+       TOPIC 9: CSS UNITS
+       ============================================================ -->
+  <h2>9. CSS Units — px, %, em, rem</h2>
+
+  <div class="code-box">px   → absolute pixels, no scaling
+%    → relative to parent element
+em   → relative to current element's font-size (COMPOUNDS when nested)
+rem  → relative to root &lt;html&gt; font-size (DOES NOT compound — preferred)</div>
+
+  <div class="result-box">
+    <div class="result-label">Live unit demo — all set to "1.25x base size":</div>
+    <div class="demo-units-container">
+      Parent container: font-size: 16px
+      <div class="demo-px">font-size: 20px → always exactly 20px (absolute)</div>
+      <div class="demo-rem">font-size: 1.25rem → 1.25 × 16px (root) = 20px (predictable)</div>
+      <div class="demo-em">font-size: 1.25em → 1.25 × 16px (parent) = 20px (here same, but compounds if nested!)</div>
+      <div class="demo-pct">width: 60% → 60% of parent width (resize window to see it adapt)</div>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <strong>Interview Answer — em vs rem:</strong><br>
+    <strong>em</strong> is relative to the <em>current element's</em> font-size. It compounds when elements are nested — child's em multiplies parent's em size, causing unpredictable large sizes deep in the tree.<br><br>
+    <strong>rem</strong> is relative to the <em>root (&lt;html&gt;) font-size</em> only. It never compounds. 1rem = 16px everywhere on the page, regardless of nesting. This makes rem predictable and the preferred unit for font-size and spacing in modern CSS.
+  </div>
+
+
+  <hr class="topic-divider">
+
+  <!-- ============================================================
+       TOPIC 10: CSS VARIABLES
+       ============================================================ -->
+  <h2>10. CSS Variables (Custom Properties)</h2>
+
+  <div class="code-box">/* DECLARE variables on :root for global access */
+:root {
+  --primary:   #0f3460;
+  --accent:    #e94560;
+  --success:   #27ae60;
+  --radius:    8px;
+  --space-md:  16px;
+  --shadow:    0 2px 12px rgba(0,0,0,0.08);
+}
+
+/* USE variables with var() function */
+.card {
+  background: white;
+  border-radius: var(--radius);        /* 8px */
+  padding: var(--space-md);            /* 16px */
+  box-shadow: var(--shadow);
+  border-left: 4px solid var(--accent); /* #e94560 */
+}
+
+/* Fallback value if variable not defined */
+color: var(--primary, blue);  /* uses blue if --primary doesn't exist */
+
+/* Dark mode with variables — just swap values! */
+.dark-mode {
+  --primary: #ffffff;
+  --accent: #ff6b6b;
+}</div>
+
+  <div class="result-label" style="margin-top:14px;">Live CSS Variable Demo — all three cards use the same variables:</div>
+
+  <div class="var-demo-card">
+    <h4>Card styled with CSS Variables</h4>
+    <p>border-radius: var(--radius) | padding: var(--space-md) | border-color: var(--accent)</p>
+  </div>
+  <div class="var-demo-card">
+    <h4>Same variables, same card style</h4>
+    <p>Change --accent in :root once → both cards update instantly.</p>
+  </div>
+
+  <div style="margin-top: 16px;">
+    <p class="result-label">Buttons using variable colors:</p>
+    <button class="var-demo-btn">Accent var(--accent)</button>
+    <button class="var-demo-btn var-demo-btn-primary">Primary var(--primary)</button>
+    <button class="var-demo-btn var-demo-btn-success">Success var(--success)</button>
+    <button class="var-demo-btn var-demo-btn-warning">Warning var(--warning)</button>
+  </div>
+
+
+  <hr class="topic-divider">
+
+  <!-- ============================================================
+       QUICK REVISION CHEAT SHEET
+       ============================================================ -->
+  <h2>⚡ Quick Revision — Interview Cheat Sheet</h2>
+
+  <div class="code-box">/* 3 WAYS TO WRITE CSS */
+Inline   → style=""            highest specificity, avoid
+Internal → &lt;style&gt; in head      good for single pages
+External → &lt;link&gt; to .css       ALWAYS use in real projects
+
+/* SELECTORS */
+element        → p { }               all paragraphs
+.class         → .box { }            elements with class="box"
+#id            → #title { }          element with id="title"
+*              → * { }               ALL elements
+group          → h1, h2, h3 { }     multiple selectors
+descendant     → .card p { }        p inside .card (any depth)
+child          → .card > p { }      p directly inside .card only
+
+/* SPECIFICITY SCORE — higher wins */
+Inline style   → 1,0,0,0
+#id            → 0,1,0,0
+.class         → 0,0,1,0
+element tag    → 0,0,0,1
+!important     → overrides EVERYTHING (avoid)
+
+/* COLOR FORMATS */
+named          → color: tomato;
+hex            → color: #e94560;
+rgb            → color: rgb(233, 69, 96);
+rgba           → color: rgba(233, 69, 96, 0.5);
+hsl            → color: hsl(349, 81%, 59%);
+hsla           → color: hsla(349, 81%, 59%, 0.5);
+
+/* BACKGROUNDS */
+background-color: #0f3460;
+background-image: linear-gradient(to right, #0f3460, #e94560);
+background-image: radial-gradient(circle, #f39c12, #e74c3c);
+background-image: url("img.jpg");
+background-size: cover | contain | auto;
+background-position: center | top | 50% 50%;
+background-repeat: no-repeat | repeat | repeat-x;
+
+/* TYPOGRAPHY */
+font-family: 'Segoe UI', Arial, sans-serif;
+font-size: 1rem;               /* base = 16px */
+font-weight: 400 | 700 | 300;  /* normal, bold, light */
+font-style: normal | italic;
+line-height: 1.6;              /* unitless — recommended */
+text-align: left | center | right | justify;
+text-decoration: none | underline | line-through;
+text-transform: uppercase | lowercase | capitalize;
+letter-spacing: 2px;
+text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+/* Shorthand: */
+font: italic 700 1.2rem/1.6 'Segoe UI', sans-serif;
+
+/* UNITS */
+px   → absolute, exact, doesn't scale
+%    → relative to parent
+em   → relative to current font-size, COMPOUNDS in nesting
+rem  → relative to root html font-size, DOES NOT compound ✅
+vw   → 1% of viewport width
+vh   → 1% of viewport height
+
+/* CSS VARIABLES */
+:root { --primary: #0f3460; }         /* declare */
+color: var(--primary);                /* use */
+color: var(--primary, blue);          /* with fallback */
+
+/* KEY INTERVIEW QUESTIONS */
+Q: Difference between em and rem?
+A: em is relative to current/parent font-size, compounds in nesting.
+   rem is relative to root html font-size, never compounds. Use rem.
+
+Q: What is specificity?
+A: Score system deciding which CSS rule wins when rules conflict.
+   inline > #id > .class > element
+
+Q: What is the cascade?
+A: Rules flow top to bottom. If specificity is equal, last rule wins.
+
+Q: background-size cover vs contain?
+A: cover  → scales to fill element entirely (may crop image)
+   contain → scales to fit entire image (may leave empty space)
+
+Q: What are CSS variables?
+A: Custom properties declared with --name on :root, used with var().
+   Dynamic — can be changed by JavaScript at runtime.</div>
+
+</div><!-- end page-wrapper -->
+</body>
+</html>
